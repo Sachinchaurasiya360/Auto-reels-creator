@@ -1,0 +1,9 @@
+{
+  "name": "sarvam-tts-helper",
+  "private": true,
+  "type": "module",
+  "description": "Sarvam AI (Bulbul) text-to-speech for reel voiceovers. See tts.mjs.",
+  "dependencies": {
+    "sarvamai": "1.1.14"
+  }
+}

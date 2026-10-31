@@ -4,7 +4,8 @@
 // Sarvam, and writes an mp3, or a 48 kHz mono wav when -o ends in .wav (what
 // helpers/transcribe.py and the HyperFrames build expect).
 //
-// Key: SARVAM_API_KEY in the repo's .env (gitignored) or the environment.
+// Keys: SARVAM_API_KEY, or sarvam_api_key1 / sarvam_api_key2 (any case), in the repo's .env
+// (gitignored) or the environment. When a key is out of credit or rejected, the next one is used.
 //
 // Usage (from the repo root):
 //   node helpers/sarvam/tts.mjs reels/<dir>/script.txt -o reels/<dir>/voiceover.wav
@@ -57,16 +58,30 @@ function parseArgs(argv) {
   return a;
 }
 
-function loadKey() {
+// Every SARVAM_API_KEY, SARVAM_API_KEY1, SARVAM_API_KEY2... (any case), in that order, deduplicated.
+function loadKeys() {
+  const found = new Map();
+  const add = (name, value) => {
+    const m = name.match(/^sarvam_api_key(\d*)$/i);
+    if (m && value) found.set(Number(m[1] || 0), value.replace(/^["']|["']$/g, ""));
+  };
+  for (const [k, v] of Object.entries(process.env)) add(k, v);
   for (const f of [path.join(REPO, ".env"), path.resolve(".env")]) {
     if (!fs.existsSync(f)) continue;
     for (const line of fs.readFileSync(f, "utf8").split(/\r?\n/)) {
-      const m = line.match(/^\s*SARVAM_API_KEY\s*=\s*(.+?)\s*$/);
-      if (m) return m[1].replace(/^["']|["']$/g, "");
+      const m = line.match(/^\s*([A-Za-z0-9_]+)\s*=\s*(.+?)\s*$/);
+      if (m) add(m[1], m[2]);
     }
   }
-  if (process.env.SARVAM_API_KEY) return process.env.SARVAM_API_KEY;
-  throw new Error("SARVAM_API_KEY not found in .env or the environment");
+  const keys = [...new Set([...found.entries()].sort((a, b) => a[0] - b[0]).map(([, v]) => v))];
+  if (!keys.length) throw new Error("no SARVAM_API_KEY / sarvam_api_key1 / sarvam_api_key2 in .env or the environment");
+  return keys;
+}
+
+// Auth, credit or rate-limit failures move on to the next key; anything else is a real error.
+function isKeyError(e) {
+  const status = e?.statusCode ?? e?.status ?? e?.response?.status;
+  return [401, 402, 403, 429].includes(status) || /quota|credit|insufficient|rate limit|unauthori[sz]ed/i.test(String(e?.message ?? e));
 }
 
 function listSpeakers(filter) {
@@ -123,7 +138,21 @@ async function main() {
   if (fs.existsSync(out) && !a.force) { console.log(`exists, skipping (use --force): ${out}`); return; }
   fs.mkdirSync(path.dirname(out), { recursive: true });
 
-  const client = new SarvamAIClient({ apiSubscriptionKey: loadKey() });
+  const keys = loadKeys();
+  let keyIndex = 0;
+  let client = new SarvamAIClient({ apiSubscriptionKey: keys[0] });
+  const synthWithFailover = async (t, f) => {
+    for (;;) {
+      try {
+        return await synth(client, a, t, f);
+      } catch (e) {
+        if (!isKeyError(e) || keyIndex + 1 >= keys.length) throw e;
+        keyIndex++;
+        console.log(`key ${keyIndex} rejected (${e?.statusCode ?? e?.message ?? e}), trying key ${keyIndex + 1} ... `);
+        client = new SarvamAIClient({ apiSubscriptionKey: keys[keyIndex] });
+      }
+    }
+  };
   const parts = chunk(text);
   const tmp = fs.mkdtempSync(path.join(path.dirname(out), ".sarvam-"));
   try {
@@ -131,7 +160,7 @@ async function main() {
     for (const [i, t] of parts.entries()) {
       const f = path.join(tmp, `${String(i + 1).padStart(2, "0")}.mp3`);
       process.stdout.write(`  ${i + 1}/${parts.length}  ${t.length} chars ... `);
-      await synth(client, a, t, f);
+      await synthWithFailover(t, f);
       console.log("ok");
       files.push(f);
     }

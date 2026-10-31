@@ -63,3 +63,6 @@ project.md
 .venv-tts/
 voice/
 reels/
+
+# Series studio renders
+series/studio/out/

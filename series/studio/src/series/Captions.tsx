@@ -42,8 +42,8 @@ export function toPhrases(words: CaptionWord[]): Phrase[] {
 }
 
 const speakerStyle = {
-  interviewer: { label: "Interviewer", bg: colors.ink, fg: "#fff" },
-  candidate: { label: "Candidate", bg: colors.blue, fg: "#fff" },
+  interviewer: { label: "Arjun · Interviewer", bg: colors.ink, fg: "#fff" },
+  candidate: { label: "Priya · Candidate", bg: colors.blue, fg: "#fff" },
 } as const;
 
 export function Captions({

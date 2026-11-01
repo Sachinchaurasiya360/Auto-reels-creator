@@ -20,6 +20,14 @@ off-centre (checked 2026-10-31 on node-graph, imessage-chat-flow, terminal-simul
 vertical stage that scales and places them before using them in a reel. That wrapper is the first
 library task of the pilot reel.
 
+## Rule: reuse first, improve, then build (Sachin, 2026-11-02)
+
+Before writing any scene, search this catalog and `src/series/*` (and Remocn / snapcn / onda below) for
+what already exists. If something is close, **improve that component** (a new prop, a variant) instead of
+drawing a new one inside the reel. Build new only when nothing fits, and build it in `src/series/` from the
+existing pieces, then add it here. No helper gets copy-pasted between reels: if two reels need it, it
+belongs in the library.
+
 ## Series (ours) — `src/series/`
 
 | Scene | What it is |
@@ -29,6 +37,36 @@ library task of the pilot reel.
 | `CommentPrompt` | the comment-driver card: question, two answer chips, reply box typing an answer |
 | `FollowCard` | InternHack profile card, tap on Follow flips to Following |
 | `demo/SeriesKitDemo` | smoke test of the kit (not a reel) |
+| `Phone` | modern Android phone drawn at native size; children = screen (`PHONE_SCREEN` gives its size) |
+| `Props` | `QRCode`, `Soundbox`, `Counter`, `StrikeChip`, `InfoCard`, `BankGlyph` |
+| `System` | `SysNode` (party box) and `Link` (curved link that draws on and carries packets) |
+| `Stage` | puts a 16:9 library component into the vertical frame |
+| `Road` (2026-11-01) | side-view `Car` (FASTag sticker on the windshield, `tagGlow`, `wheelTurn`), `TollGantry` (lane sign + RFID reader, `waves`), `BoomBarrier` (`angle` -80 = open), `Road`, `FastagSticker` close-up |
+| `People` (2026-11-01) | drawn bust `Person` (`looks.interviewer/candidate/student/mom`, `talk`, `mood`), video-call `CallTile`, `CallPair` (interviewer + candidate, speaking ring) |
+| `Devices` (2026-11-01) | `Laptop` (screen = children), `Router`, `CellTower`, `IncognitoGlyph` |
+| `Motion` (2026-11-01) | `Punch` (punch-in toward a point, optional back-out), `ColorWipe` (colour flood hiding a cut, reel level), `Travel` (object A -> B, optional arc), `Pill` |
+| `Sms` (2026-11-01) | bank SMS / notification card for inside `Phone` |
+| `Calls` (2026-11-02) | `IncomingCall` screen for inside `Phone dark`: network-shown name (CNAP), number, sub line, pulsing avatar (`ring`) |
+| `Lift` (2026-11-02) | building lift from the lobby: floor display, sliding steel doors (`open` 0-1), cabin children |
+| `Layout` (2026-11-02) | `Bleed` (fade below the platform-UI line, for tall phones), `Pop` (placed element that scales in with `usePop`) |
+| `Infra` (2026-11-02) | `Db` (SVG cylinder: `size`, `glow`, `shake`), `Server` (dark panel + status dot), `Store` (one cached/stored value card, `glow`), `Envelope` (a message as an envelope), `Stamp` (rubber stamp slam), `Bubble` (speech bubble) |
+| `People.CaptionCall` (2026-11-02) | Arjun + Priya call strip whose speaking ring follows the captions at reel-time `t` |
+| `Kit` (2026-11-02) | brand-styled wrappers over the third-party pieces that passed the vertical trial: `CodeBeat` (Remocn code-morph: light IDE, line numbers, code morphs between versions; crop computed from the panel), `InterviewChat` (Remocn iMessage thread, Arjun/Priya; `interviewChatSeconds`), `BigNumber` (odometer roll, holds the end value), `Annotate` (hand-drawn ink arrow between frame points), `Verdict` (word slams in with dust: DROP / 429 / DECLINED), `BeforeAfter` (onda split screen, stacked), `Emphasis` (onda underline). Also `Band`, `BAND`, `brandVars` to place any onda/Remocn component in the content band |
+| `Transitions` (2026-11-02) | `whipPan`, `pushThrough`, `zoomBlur`, `lensZoom` (+ `TransitionSeries`, `linearTiming`) for real scene transitions between Beats |
+
+## Third-party trial verdicts (2026-11-02, stills in `series/studio/out/sf/lib-sheet-*.png`, file `src/reels/styleframes/LibTrial.tsx`)
+
+- **Use (wrapped in `Kit` / `Transitions`):** code-morph, imessage-chat-flow, number-wheel, ink-arrow, impact-shake,
+  onda split-screen, onda underline, the 4 transitions.
+- **Use as-is with `Band` + `brandVars`:** Remocn terminal-simulator (keep lines < 40 chars), message-bubble +
+  typing-indicator, Odometer; onda CountUp (en-US commas), Timeline (4-5 short labels), LowerThird, BoundingBox
+  (fractions of the Band canvas); snapcn follower-rush (vertical).
+- **Needs work first:** marker-highlight / inline-highlight (hard-coded white box), toast / progress / stepper
+  (labels < 32px at this scale), animated-bar-chart (8px labels), onda NodeGraph (20px fixed labels, dark hub),
+  BrowserFrame, snapcn search-typing (camera crops it), status-cycle (blue slab).
+- **Don't use:** ecosystem-constellation (fixed brand icons), snapcn count-grid (remote posters), onda CodeDiff /
+  Remocn glass-code-block on light ground (dark glass, unreadable), onda SlotMachineRoll (bug: lands on wrong digits),
+  onda DeviceFrame and snapcn phone-frame (our `Phone` is better), caption-speaker (we have `Captions`).
 
 ## Remocn — `src/components/remocn/`
 
@@ -46,13 +84,17 @@ library task of the pilot reel.
 
 ## snapcn — `src/components/snap-cn/`
 
-| Group | Components |
+**Paid-tier stubs, do not use** (they only play a watermarked "snapcn Pro preview" video from snapcn's
+server; found 2026-11-02): chat-thread, checkout-push, comment-storm, tally-rise, tap-through, ticker-climb,
+vault-count, wire-feed.
+
+| Group | Real components |
 | --- | --- |
-| Devices | phone-frame, tap-through |
-| Money / numbers | checkout-push (fixed demo, no props), vault-count, tally-rise, ticker-climb, count-grid |
-| Social | comment-storm, follower-rush, chat-thread |
+| Devices | phone-frame |
+| Numbers | count-grid |
+| Social | follower-rush |
 | Captions | karaoke-captions, word-captions |
-| UI | search-typing, status-cycle, wire-feed, input |
+| UI | search-typing, status-cycle, input, caret |
 
 ## onda — `src/components/onda/`
 

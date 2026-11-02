@@ -23,7 +23,7 @@ The editor's verdict on the first reel this skill made was "Claude slop": flat c
 - Niche: tech / AI / internet news. Audience: people who use tech, not experts.
 - Language: English by default. Hindi/Hinglish when asked (`references/hindi.md`).
 - Output: one vertical 1080x1920 video at 30 fps. Target 30-60s; up to 90s is fine for Reels and Shorts when the story needs it. Never pad.
-- Voice, in order of preference: audio the user supplies (e.g. Sarvam AI for Hindi), else the user's own voice cloned locally with Chatterbox (`helpers/voiceover.py`). Never an ElevenLabs TTS voice; ElevenLabs is only for Scribe transcription.
+- Voice, in order of preference: audio the user supplies (e.g. Sarvam AI for Hindi), else the user's own voice cloned locally with Chatterbox (`helpers/voiceover.py`). Never ElevenLabs, for voice or transcription (Sachin, 2026-11-02).
 - Faceless: no talking head. Visuals are motion design: cut-out photo collage, generated props, real screenshots as receipts, kinetic type.
 - No fixed channel palette. Each reel gets its own colour world chosen for its topic (`references/visual-style.md` §1), never the same as the previous reel's (check `reels/LOG.md`).
 - SFX library: `reels/_library/sfx/manifest.json` (45 trimmed, normalized sounds; clicks for every kind of edit event).
@@ -88,7 +88,7 @@ Broad topic or unclear angle: run `/ig-viral` on the niche, then pick a format (
 - **Sarvam API** (Hindi/Hinglish default): `node helpers/sarvam/tts.mjs <dir>/script.txt -o <dir>/voiceover.wav` (`references/hindi.md`).
 - **User-supplied audio** (a recording, Sarvam web app): ask for WAV (FLAC fine, MP3 acceptable). Copy it into the reel folder as `voiceover.wav`.
 - **Cloned voice**: `.venv-tts/Scripts/python.exe helpers/voiceover.py <dir>/script.txt -o <dir>/voiceover.wav` (needs `voice/reference.wav`; if missing, ask for a 15-30s clean recording and run `--prep-ref`). English only; Hindi needs supplied audio (`references/hindi.md`).
-- Word timings: `PYTHONUTF8=1 python helpers/transcribe.py <dir>/voiceover.wav --edit-dir <dir>/edit --language <en|hi>` (convert to a 64k mono mp3 first on slow internet).
+- Word timings: `PYTHONUTF8=1 python helpers/transcribe_local.py <dir>/voiceover.wav --edit-dir <dir>/edit` (add `--lines <dir>/vo_lines` when the voice came from `voice_cast.py`). Local only, no ElevenLabs.
 - Diff the transcript against `script.txt`. A word the ASR mishears is a word viewers mishear: regenerate the line, or for supplied audio, fix the caption text by word index and keep the timing.
 - Over the target length? Trim pauses, not words: cut silences over 0.35s down to 0.2s, or `atempo` up to 1.08 at most.
 

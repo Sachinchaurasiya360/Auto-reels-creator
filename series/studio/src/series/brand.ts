@@ -1,6 +1,7 @@
 // InternHack series brand. Values come from the product itself
 // (../InternHack/client/src/index.css and the logo), so the reels and the site read as one thing.
 
+import { loadFont as loadInstrumentSerif } from "@remotion/google-fonts/InstrumentSerif";
 import { loadFont as loadInter } from "@remotion/google-fonts/Inter";
 import { loadFont as loadJetBrainsMono } from "@remotion/google-fonts/JetBrainsMono";
 import { loadFont as loadSpaceGrotesk } from "@remotion/google-fonts/SpaceGrotesk";
@@ -12,6 +13,8 @@ export const fonts = {
   display: loadSpaceGrotesk("normal", { weights: ["500", "600", "700"], subsets: ["latin"] }).fontFamily,
   body: loadInter("normal", { weights: ["400", "500", "600", "700", "800"], subsets: ["latin"] }).fontFamily,
   mono: loadJetBrainsMono("normal", { weights: ["500", "700"], subsets: ["latin"] }).fontFamily,
+  // editorial titles for news reels (Press.tsx); italic is loaded too
+  serif: (loadInstrumentSerif("italic", { subsets: ["latin"] }), loadInstrumentSerif("normal", { subsets: ["latin"] }).fontFamily),
 };
 
 export const colors = {

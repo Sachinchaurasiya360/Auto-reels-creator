@@ -2,7 +2,7 @@ import { interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { colors, fonts } from "./brand";
 
 // The reel's one comment driver, drawn as an Instagram-style comment sheet:
-// the question, two answer chips, and the reply box typing the viewer's answer.
+// the question, two or three answer chips, and the reply box typing the viewer's answer.
 
 export function CommentPrompt({
   question,
@@ -11,7 +11,7 @@ export function CommentPrompt({
   top = 620,
 }: {
   question: string;
-  options: [string, string];
+  options: [string, string] | [string, string, string];
   typed?: string;
   top?: number;
 }) {
@@ -41,7 +41,7 @@ export function CommentPrompt({
     >
       <div style={{ fontSize: 30, fontWeight: 600, color: colors.muted }}>Comment karo</div>
       <div style={{ fontFamily: fonts.display, fontSize: 60, fontWeight: 700, lineHeight: 1.12, marginTop: 18 }}>{question}</div>
-      <div style={{ display: "flex", gap: 18, marginTop: 30 }}>
+      <div style={{ display: "flex", flexWrap: "wrap", gap: 18, marginTop: 30 }}>
         {options.map((o, i) => (
           <div
             key={o}

@@ -117,3 +117,44 @@ Server / Envelope / Store / Stamp / Bubble / the caption call strip were reel-lo
 2. Close but not right: extend that component (prop or variant). Never redraw it inside the reel.
 3. Nothing fits: build it in `src/series/` from existing pieces, add it to CATALOG.md, then use it.
 4. Reel files hold beats only. No helper is defined in more than one reel.
+
+## 2026-11-02 · Numbers spelled out, max 2 voices
+
+Sachin, on Mock Interview Ep 3 (cache): "insted of pronouncing the 'do hazar pandrah' which is two
+thousand fifteen you said 'two sunya ek panch'" and "don't use more than 2 voice in a single video".
+The script had `2015` (and `12 बजे`, `13 गुना`) as digits, and used three voices (Arjun, Priya and a narrator).
+
+1. **No digits in `script_tts.txt`.** Sarvam hi-IN reads digits one by one. Write every number the way a
+   person says it: years `दो हज़ार पंद्रह`, times `बारह बजे`, counts `तेरह गुना`, money `नौ-सौ-निन्यानवे`.
+   Digits are fine in `script.txt` and on-screen captions. `helpers/voice_cast.py` refuses to voice a line with digits.
+2. **At most 2 voices per reel.** Mock Interview: Arjun (`I`) and Priya (`C`) only, no narrator (`N`); the
+   explainer lines go to Arjun or Priya in dialogue. Narrated slots: one narrator, plus at most one
+   other voice. `voice_cast.py` refuses a script with more than 2 speakers.
+3. **Listen-check numbers before the render**: transcribe the voiceover and confirm every number came
+   back as words, not digit-by-digit.
+
+## 2026-11-02 · Goal is views AND follows: series spine, one building analogy, slower voice
+
+Sachin: "whatever you mention incorporate this, goal view and follows". From the stats: since Nov 1 every reel
+reaches 1.2-1.6k (98-99% non-followers) but only **2 follows from ~6,700 views**. Reference: a reel his junior (a viewer) shared, creator unknown:
+`Video-25627.mp4` (repo root, "System Design Part 1/30"): one narrator, a calm pace, one chai-tapri analogy that
+builds into servers / load balancer / cache / reliability in one evolving scene, a real proof (IRCTC Tatkal
+load bar to HANG), and "Next: Part 2/30" + a reason to follow. No competitor list yet (Sachin will share later).
+
+1. **Every reel gives a reason to follow.** Number it as a part of a named series ("Part 5 · Real Life System
+   Design") and end on the **named next part** ("Agla part: Swiggy ka live map. Follow karo, kal aayega").
+   Then that next part really is the next reel of that slot: put it at the top of `series/backlog.md`.
+2. **One analogy per reel that builds.** Pick one everyday scene (chai tapri, shaadi, hostel mess) and let it
+   grow beat by beat into the whole mechanism, on screen as **one evolving scene** with a legend that
+   accumulates (each concept added as a tag). Jokes come out of that scene; no new mini-analogy every beat.
+3. **Slower voice.** `voice_cast.py --pace 1.0-1.1` (not 1.25), about 150 words a minute: 60-80s = 150-200
+   words. If the reel runs long, cut words, never speed up. (Nov 3 reels shipped at 1.25: compare their hold.)
+4. **Try one voice.** Narrated slots: one narrator. Mock Interview may test a single narrator telling the
+   interview as a story against Arjun + Priya; log which one ran.
+5. **Measure follows.** §0 reads follows and profile visits per 1,000 reach, and saves + shares per reach,
+   next to views; a reel that reaches but doesn't convert gets a written "why" (no follow reason? no series?).
+6. **Instagram vs YouTube side by side.** Open each recent Short's YouTube analytics (viewed vs swiped away,
+   average view duration) and write why the same reel did differently on each platform.
+7. **Trends weekly, without a competitor list.** Run `/ig-viral` on the niche itself (Instagram search /
+   hashtags in the logged-in Chrome: system design Hindi, placement prep, tech news India), keep
+   `.claude/instagram/swipe.md`, and let it steer topics and hook formulas.

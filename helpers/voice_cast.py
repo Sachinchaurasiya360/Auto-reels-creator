@@ -6,7 +6,8 @@ and a longer one when the speaker changes. Lines already voiced are reused, so a
 re-voices only that line (delete its file, or pass --force to redo all).
 
 Cast (confirmed 2026-10-31): narrator mohit_hi_conversational, interviewer aditya_hi_conversational,
-candidate advait_hi_character.
+candidate advait_hi_character. A script may use at most two of them (interview: I + C only, no N).
+Every number must be written in Devanagari words; the script refuses to voice lines with digits.
 
 Usage:
     python helpers/voice_cast.py reels/<dir>/script_tts.txt -o reels/<dir>/voiceover.wav [--pace 1.1] [--force]
@@ -24,6 +25,22 @@ CAST = {"N": "mohit_hi_conversational", "I": "aditya_hi_conversational", "C": "a
 SAME_SPEAKER_GAP = 0.22
 SPEAKER_CHANGE_GAP = 0.42
 RATE = 48000
+MAX_VOICES = 2
+
+
+def check_script(lines: list[str]) -> list[str]:
+    """Digits get read one by one in hi-IN ("2015" -> "two sunya ek panch"), so every number must be
+    spelled out in Devanagari words. And a reel never uses more than MAX_VOICES voices."""
+    problems, speakers = [], set()
+    for i, line in enumerate(lines, 1):
+        m = re.match(r"([ICN]):\s*(.*)", line)
+        speakers.add(m.group(1) if m else "N")
+        digits = re.findall(r"[0-9०-९][0-9०-९,.]*", m.group(2) if m else line)
+        if digits:
+            problems.append(f"line {i}: spell out {', '.join(digits)} in words (2015 -> दो हज़ार पंद्रह)")
+    if len(speakers) > MAX_VOICES:
+        problems.append(f"{len(speakers)} speakers ({', '.join(sorted(speakers))}); max {MAX_VOICES} voices per reel")
+    return problems
 
 
 def main() -> int:
@@ -36,6 +53,11 @@ def main() -> int:
     sys.stdout.reconfigure(encoding="utf-8")  # Devanagari progress lines on a Windows console
 
     lines =[l.strip() for l in args.script.read_text(encoding="utf-8").splitlines() if l.strip() and not l.startswith("#")]
+    problems = check_script(lines)
+    if problems:
+        print("script_tts.txt is not ready to voice (series/LESSONS.md, 2026-11-02 numbers + voices):")
+        print("\n".join(f"  {msg}" for msg in problems))
+        return 1
     parts_dir = args.output.parent / "vo_lines"
     parts_dir.mkdir(parents=True, exist_ok=True)
 

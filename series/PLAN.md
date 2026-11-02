@@ -10,7 +10,7 @@ Decided with Sachin on 2026-10-31.
 | Brand | InternHack ([@intern.hack](https://www.instagram.com/intern.hack/), internhack.xyz, tagline "Prepare. Practice. Placed."). Logo: `../InternHack/client/public/logo.png` (black tile, white i, blue H). Fonts and tokens from `../InternHack/client/src/index.css`: Space Grotesk (display), Inter (body), warm off-white ground `#fafaf9`/`#f5f5f4`, ink `#0c0a09`, muted `#57534e`, border `#e7e5e4`; accents: the logo's blue and the site's lime `#a3e635`. |
 | Look | One fixed light UI-mockup series look, more detailed than the "Dev Basics" reference. Replaces the per-reel colour world and photo collage for these series. |
 | Language | Hinglish voice, Roman-script captions ("UPI ka paisa kahan jaata hai") |
-| Voice | Sarvam API (`helpers/sarvam/tts.mjs`, `--lang hi-IN`), keys `sarvam_api_key1` then `sarvam_api_key2` (automatic failover). Cast (confirmed 2026-10-31): narrator for slots A and C `mohit_hi_conversational`; mock interview: interviewer `aditya_hi_conversational`, candidate `advait_hi_character`. |
+| Voice | Sarvam API (`helpers/sarvam/tts.mjs`, `--lang hi-IN`), keys `sarvam_api_key1` then `sarvam_api_key2` (automatic failover). Cast (confirmed 2026-10-31): narrator for slots A and C `mohit_hi_conversational`; mock interview: interviewer `aditya_hi_conversational`, candidate `advait_hi_character`. **Max 2 voices per reel** (interview = interviewer + candidate, no narrator). **No digits in the TTS script**: spell every number in Devanagari words (2026-11-02, see LESSONS.md). |
 | Engine | **Remotion** for the series library and builds (React components with props, and the MIT Remotion libraries in §6 drop straight in). Remotion is free for individuals and teams of up to 3; check remotion.dev/license once InternHack hires beyond that. HyperFrames' local blueprints are used as motion recipes. |
 | Images | **None.** No AI image generation, no photos. Everything is drawn UI, diagrams, icons and type. People are initials avatars or icon silhouettes. |
 | Daily mix | Same 3 slots every day (§2) |
@@ -145,7 +145,7 @@ New helper `helpers/new_reel.py <slot> <slug>`: creates the reel's working folde
 1. `topics.py backlog` → pick 3 (A, B, C for today's weekday) → `topics.py check` each.
 2. Research ×3 in parallel → `research.md` each.
 3. Hooks + scripts ×3 → **daily gate** (one message: 3 hooks, 3 scripts, comment drivers).
-4. Sarvam VO (2 voices for B) → Scribe word timings → caption fixes.
+4. Sarvam VO (2 voices for B) → local word timings (`transcribe_local.py`, no ElevenLabs) → caption fixes.
 5. Edit plan → style-frame stills of hook / midpoint / payoff compared with `reelsdownloader-video-1.mp4` → build the composition from library scenes → still frames review (anti-slop) → `npx remotion render` → loudness.
 6. Post copy (`/ig-caption`, YouTube title/description, pinned comment) → `topics.py add` → deliver all 3.
 7. Weekly: enter metrics, `/ig-audit` every ~10 reels, reorder backlog by what's working.

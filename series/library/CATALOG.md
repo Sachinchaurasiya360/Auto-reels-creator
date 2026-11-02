@@ -52,6 +52,12 @@ belongs in the library.
 | `Infra` (2026-11-02) | `Db` (SVG cylinder: `size`, `glow`, `shake`), `Server` (dark panel + status dot), `Store` (one cached/stored value card, `glow`), `Envelope` (a message as an envelope), `Stamp` (rubber stamp slam), `Bubble` (speech bubble) |
 | `People.CaptionCall` (2026-11-02) | Arjun + Priya call strip whose speaking ring follows the captions at reel-time `t` |
 | `Kit` (2026-11-02) | brand-styled wrappers over the third-party pieces that passed the vertical trial: `CodeBeat` (Remocn code-morph: light IDE, line numbers, code morphs between versions; crop computed from the panel), `InterviewChat` (Remocn iMessage thread, Arjun/Priya; `interviewChatSeconds`), `BigNumber` (odometer roll, holds the end value), `Annotate` (hand-drawn ink arrow between frame points), `Verdict` (word slams in with dust: DROP / 429 / DECLINED), `BeforeAfter` (onda split screen, stacked), `Emphasis` (onda underline). Also `Band`, `BAND`, `brandVars` to place any onda/Remocn component in the content band |
+| `Atm` (2026-11-03) | `Atm` machine (bank hood, screen = `screen` node, keypad, card slot, cash slot; `cash` 0-1 pushes notes out, `stuck` jams them with a red slot light), `Note` (₹500 note) |
+| `Calendar` (2026-11-03) | `DayGrid`: day boxes that light up one by one (`lit`), red from `warnFrom` (T+5 rules, exposure windows), `tag(i)` labels a box |
+| `Data` (2026-11-03) | `RowScan` (table read row by row: `scan` 0-1 moves the read head, `hit` marks the match), `IndexTree` (B-tree levels, `path` lit `lit` levels deep) |
+| `Sky` (2026-11-03) | `Satellite` (solar wings + its onboard `ClockFace`, `dead`, `glow`), `ClockFace`, `MapDot` (street map + blue location dot, `halo`, `lost`), `RangeRing` (a satellite's distance circle, `draw` 0-1) |
+| `Press` (2026-11-03) | news-reel proof in the Hyderabad-reference style: `SerifTitle` (Instrument Serif + italic sub line), `SourceCard` (source page; wrap the quote in `Marked`), `XPost`, `Marked` (black marker sweep, `hl` 0-1). `fonts.serif` added to `brand.ts` |
+| `CommentPrompt` (improved 2026-11-03) | now takes 2 or 3 options (chips wrap) |
 | `Transitions` (2026-11-02) | `whipPan`, `pushThrough`, `zoomBlur`, `lensZoom` (+ `TransitionSeries`, `linearTiming`) for real scene transitions between Beats |
 
 ## Third-party trial verdicts (2026-11-02, stills in `series/studio/out/sf/lib-sheet-*.png`, file `src/reels/styleframes/LibTrial.tsx`)

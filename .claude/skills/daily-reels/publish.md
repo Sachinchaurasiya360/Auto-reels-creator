@@ -27,9 +27,17 @@ with `js`, `cdp`, `click_at_xy`, `type_text`, `switch_tab`, `goto_url` pre-impor
 - Each `https://www.instagram.com/intern.hack/reel/<id>/`: `article` (or `main`) `innerText` has the
   caption, the "N likes / Liked by …" line, the comments and the age ("7h", "1d"). Match reels to the log
   by the caption's first line.
-- The account is professional (category Tech). Try each reel's "View insights" for reach and watch time.
-  `/insights/media/<id>/` returned "page isn't available" on 2026-11-01, so if no web insights load,
-  report views/likes/comments only.
+- Insights (work as of 2026-11-02): on the reel page click the element whose text is `View insights`; it opens
+  `/insights/media/<numeric id>/`. `document.body.innerText` then has Views, Followers / Non-followers %, Viewers
+  (reach), Likes, Comments, Saves, Shares, Profile activity, Follows. The leading `0:0X` is the player position,
+  not watch time; web insights have no watch time or skip rate.
+
+**Comments (pinned comments, replies)**
+- Box is `textarea[aria-label="Add a comment…"]`: scroll it into view, click it, **also call `.focus()`**, then
+  `Input.insertText`; check `.value` equals the text (without focus it stayed empty on 3 of 5 reels), then click
+  the `Post` button.
+- Instagram web has **no Pin**: a comment's "Comment Options" (hover its Reply line) only offers Delete. Post
+  the comment from the browser and pin it in the phone app.
 
 **YouTube Studio**
 - `https://studio.youtube.com/channel/UCsBOnrfOFU-v_wPRu_VH7EA/videos/short`: rows are `ytcp-video-row`;

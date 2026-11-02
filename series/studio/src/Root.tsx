@@ -6,12 +6,16 @@ import { UPI_FRAMES, UpiChaiStall } from "./reels/UpiChaiStall";
 import { FASTAG_FRAMES, FastagToll } from "./reels/FastagToll";
 import { OTP_FRAMES, OtpSms } from "./reels/OtpSms";
 import { CACHE_FRAMES, CacheInterview } from "./reels/CacheInterview";
+import { ATM_FRAMES, AtmCash } from "./reels/AtmCash";
+import { DBI_FRAMES, DbIndexInterview } from "./reels/DbIndexInterview";
+import { NAV_FRAMES, NavicNvs03 } from "./reels/NavicNvs03";
 import { CNAP_FRAMES, CallerNameCnap } from "./reels/CallerNameCnap";
 import { IDEM_FRAMES, IdempotencyInterview } from "./reels/IdempotencyInterview";
 import { INCOG_FRAMES, IncognitoMyth } from "./reels/IncognitoMyth";
 import { NOV01_SF_FRAMES, Nov01StyleFrames } from "./reels/styleframes/Nov01StyleFrames";
 import { KIT_CHECK_FRAMES, KitCheck } from "./reels/styleframes/KitCheck";
 import { NOV02_SF_FRAMES, Nov02StyleFrames } from "./reels/styleframes/Nov02StyleFrames";
+import { NOV03_SF_FRAMES, Nov03StyleFrames } from "./reels/styleframes/Nov03StyleFrames";
 import { LIB_TRIAL_FRAMES, LibTrial } from "./reels/styleframes/LibTrial";
 import { SERIES_KIT_DEMO_FRAMES, SeriesKitDemo } from "./series/demo/SeriesKitDemo";
 
@@ -24,12 +28,16 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="fastag-toll" component={FastagToll} durationInFrames={FASTAG_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="otp-sms" component={OtpSms} durationInFrames={OTP_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="cache-interview" component={CacheInterview} durationInFrames={CACHE_FRAMES} fps={30} width={1080} height={1920} />
+      <Composition id="atm-cash" component={AtmCash} durationInFrames={ATM_FRAMES} fps={30} width={1080} height={1920} />
+      <Composition id="db-index-interview" component={DbIndexInterview} durationInFrames={DBI_FRAMES} fps={30} width={1080} height={1920} />
+      <Composition id="navic-nvs03" component={NavicNvs03} durationInFrames={NAV_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="caller-name-cnap" component={CallerNameCnap} durationInFrames={CNAP_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="idempotency-interview" component={IdempotencyInterview} durationInFrames={IDEM_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="incognito-myth" component={IncognitoMyth} durationInFrames={INCOG_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="nov01-styleframes" component={Nov01StyleFrames} durationInFrames={NOV01_SF_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="kit-check" component={KitCheck} durationInFrames={KIT_CHECK_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="nov02-styleframes" component={Nov02StyleFrames} durationInFrames={NOV02_SF_FRAMES} fps={30} width={1080} height={1920} />
+      <Composition id="nov03-styleframes" component={Nov03StyleFrames} durationInFrames={NOV03_SF_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="lib-trial" component={LibTrial} durationInFrames={LIB_TRIAL_FRAMES} fps={30} width={1080} height={1920} />
       <Composition
         id="SeriesKitDemo"

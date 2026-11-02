@@ -36,6 +36,10 @@ went through, a platform asking a new question), ask. Otherwise proceed without 
 
 ## 0. Stats of the previous reels (first thing, every run)
 
+**Scope (Sachin, 2026-11-02): only the 9 most recent reels** (the last 3 posting days), not the whole history.
+Older reels keep the numbers already logged. The grid view counts for every reel come free with one page load, so
+use them for the account median; open insights and YouTube analytics only for those 9.
+
 Use the user's already-open Chrome through the browser-use plugin (`browser_exec`). Reuse the existing
 Instagram and YouTube Studio tabs and never touch other tabs (Medium etc.). Recipes are in `publish.md`.
 
@@ -47,6 +51,10 @@ Instagram and YouTube Studio tabs and never touch other tabs (Medium etc.). Reci
 - **Write them down:** add `views`, `likes`, `comments` and `watch_pct` (whatever exists) per platform to each
   reel's record in `series/log/topics.jsonl` (keys `ig_*`, `yt_*`, plus `stats_at`), then
   `python helpers/topics.py log`. Update the same numbers in `.claude/instagram/log.md` (and re-sync it).
+- **Goal metrics: views AND follows** (LESSONS 2026-11-02 goal). Per reel: follows and profile visits per
+  1,000 reach, saves + shares per reach. A reel that reaches but doesn't convert gets one written "why".
+- **Instagram vs YouTube:** open each of the 9 recent Shorts' analytics (viewed vs swiped away, average view
+  duration) and write why the same reel did differently on each platform.
 - **Read them** the `/ig-audit` way: outlier multiple and hook formula per reel, top vs bottom, what beat its
   neighbours and the likely reason (hook, topic, length, the variable logged that day). Then `/ig-reply` drafts
   for real comments worth answering.
@@ -58,6 +66,9 @@ Instagram and YouTube Studio tabs and never touch other tabs (Medium etc.). Reci
 
 - `python helpers/topics.py today` gives the slots: A system design, B mock interview, C rotating type.
 - Pick 3 (backlog first, or fresh from research for news/GitHub/tool days), weighted by what §0 showed works.
+  The "next part" promised at the end of a slot's last reel is that slot's topic today (LESSONS 2026-11-02 goal).
+- Weekly (or when `.claude/instagram/swipe.md` is older than 7 days): `/ig-viral` on the niche itself (no
+  competitor list yet): Instagram search / hashtags in the logged-in Chrome.
 - `python helpers/topics.py check "<topic>" --concepts <ids>` on each. Always pass concepts. A REPEAT
   means pick another; a CONCEPT warning means the reel's main subject must differ.
 - Episode numbers: `python helpers/topics.py next --slot A|B|C`.
@@ -75,7 +86,10 @@ number gets a source URL; mark anything unverified. Each reel must be complete o
   line**. Sarvam mispronounces Roman Hinglish, so it reads this file. Check pairing before the gate.
   Write ₹ amounts as hyphenated Hindi number words (`नौ-सौ-निन्यानवे`), one token each; "₹999" is read slowly.
 - One comment driver per reel, different kind from yesterday's (see LOG.md).
-- **Retention first** (LESSONS.md 2026-11-01): 60-80s (max 90s, ~190-250 words at 190 wpm; LESSONS 2026-11-01 later), 2+ humour beats and a punchline at every re-hook, everyday Indian examples only, a hook that
+- **Follow reason** (LESSONS 2026-11-02 goal): "Part N" of a named series, ending on the named next part + follow.
+- **One analogy that builds** into the whole mechanism, shown as one evolving scene with an accumulating legend.
+- **Pace:** `voice_cast.py --pace 1.0-1.1`, ~150 wpm; cut words if long, never speed up. Narrated slots: one voice.
+- **Retention first** (LESSONS.md 2026-11-01): 60-80s (max 90s, ~150-200 words at ~150 wpm), 2+ humour beats and a punchline at every re-hook, everyday Indian examples only, a hook that
   opens a loop closed only in the last 5s, a re-hook every 8-10s, jargon named last, the last line looping
   to the first. Score 3 hooks with `.claude/skills/ig-reel/hookscore.py` (top must be 50+) and run
   `beats.py --target <s>` until clean. The scorer only knows English stake words and `$`; also score an
@@ -85,7 +99,9 @@ number gets a source URL; mark anything unverified. Each reel must be complete o
 ## 4. Gate (the only stop)
 
 Show all 3 together: the §0 stats summary, hook + 2 runners-up with their hookscore, the open loop and where it closes, re-hook timestamps, the script, beat-by-beat visuals, and **stills of the hook,
-midpoint and payoff** rendered from series/studio next to frames of `reelsdownloader-video-1.mp4`. If
+midpoint and payoff** rendered from series/studio next to the reference contact sheets in `series/references/`
+(`junior-part1-*`: story + one building scene, from `Video-25627.mp4`, a reel a junior shared, creator unknown; `emudhra-*`: animated mechanism;
+`hyderabad-vaccine-*`: news proof). `reelsdownloader-video-1.mp4` is gone. If
 ours has less detail than the reference, rework before showing. List the library components each beat reuses, and any component improved or built new. Also propose the posting slots (§7).
 Wait for OK or edits. If the user said "no stops", skip the wait and list every decision at delivery.
 
@@ -93,8 +109,8 @@ Wait for OK or edits. If the user said "no stops", skip the wait and list every 
 
 ```bash
 python helpers/voice_cast.py reels/<dir>/script_tts.txt -o reels/<dir>/voiceover.wav
-PYTHONUTF8=1 python helpers/transcribe.py reels/<dir>/voiceover.wav --edit-dir reels/<dir>/edit --language hi
-#   quota out? -> python helpers/transcribe_local.py reels/<dir>/voiceover.wav --edit-dir reels/<dir>/edit --lines reels/<dir>/vo_lines
+PYTHONUTF8=1 python helpers/transcribe_local.py reels/<dir>/voiceover.wav --edit-dir reels/<dir>/edit --lines reels/<dir>/vo_lines
+#   local only: no ElevenLabs / Scribe in this pipeline (Sachin, 2026-11-02)
 mkdir -p series/studio/public/reels/<slug> && cp reels/<dir>/voiceover.wav series/studio/public/reels/<slug>/vo.wav
 PYTHONUTF8=1 python helpers/captions_roman.py reels/<dir>/script.txt reels/<dir>/script_tts.txt \
   reels/<dir>/edit/transcripts/voiceover.json -o series/studio/public/reels/<slug>/captions.json --lines reels/<dir>/vo_lines/lines.json

@@ -16,7 +16,7 @@
 
 ## Word timings
 
-- `python helpers/transcribe.py <vo> --edit-dir <dir>/edit --language hi`. Scribe returns Hinglish: Hindi in Devanagari, English words in Latin, numbers as digits. That's the right caption convention, keep it.
+- `python helpers/transcribe_local.py <vo> --edit-dir <dir>/edit` (local; no ElevenLabs). The transcript returns Hinglish: Hindi in Devanagari, English words in Latin, numbers as digits. That's the right caption convention, keep it.
 - Scribe mishears some words. Fix the caption text by word index and keep the timing; keep sentence-ending punctuation on the fixed word, or the caption grouping merges two sentences. Mishearings seen so far: फ़र्ज़ी → "4G", पचासों → "500", साढ़े → "सारे", साफ़ → "साफ".
 
 ## Fonts (Devanagari + Latin in one face)

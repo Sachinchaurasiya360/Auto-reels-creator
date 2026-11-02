@@ -1,7 +1,7 @@
 """Word timings with local faster-whisper, written in the same JSON shape as helpers/transcribe.py (Scribe).
 
-Use when the ElevenLabs quota is out, or for any voiceover we generated ourselves (we already know the
-words; we only need when each is said).
+The reel pipeline's only transcriber (no ElevenLabs, Sachin 2026-11-02). Runs on the GPU (CUDA float16 on
+the GTX 1650, cuBLAS + cuDNN from the nvidia-* pip wheels in .venv) and falls back to the CPU if CUDA fails.
 
 With --lines (the vo_lines/ folder helpers/voice_cast.py writes, with its lines.json), each line is
 transcribed on its own and shifted by its exact start in the joined voiceover. That keeps errors
@@ -31,6 +31,32 @@ def decode(path: Path):
     return np.frombuffer(pcm, np.int16).astype(np.float32) / 32768.0
 
 
+def load_model(name: str):
+    """faster-whisper on CUDA when it works, else CPU int8. The nvidia-* wheels ship their DLLs in site-packages,
+    which Windows doesn't search, so add their bin folders first."""
+    import os
+    from faster_whisper import WhisperModel
+
+    try:
+        import nvidia.cublas
+        import nvidia.cudnn
+
+        for pkg in (nvidia.cublas, nvidia.cudnn):
+            bin_dir = Path(list(pkg.__path__)[0]) / "bin"
+            if bin_dir.is_dir():
+                os.add_dll_directory(str(bin_dir))
+                os.environ["PATH"] = str(bin_dir) + os.pathsep + os.environ["PATH"]
+        model = WhisperModel(name, device="cuda", compute_type="float16")
+        import numpy as np
+
+        model.transcribe(np.zeros(16000, np.float32))  # fail here, not mid-reel, if a DLL is missing
+        print("    faster-whisper on GPU (cuda float16)")
+        return model
+    except Exception as e:  # noqa: BLE001 - any CUDA/DLL failure means: use the CPU
+        print(f"    GPU unavailable ({str(e)[:80]}), using CPU")
+        return WhisperModel(name, device="cpu", compute_type="int8")
+
+
 def words_of(model, audio, language: str, offset: float = 0.0) -> list[dict]:
     segments, _ = model.transcribe(audio, language=language, word_timestamps=True, vad_filter=False)
     return [
@@ -50,9 +76,7 @@ def main() -> int:
     p.add_argument("--lines", type=Path, help="vo_lines/ folder with lines.json from voice_cast.py")
     args = p.parse_args()
 
-    from faster_whisper import WhisperModel
-
-    model = WhisperModel(args.model, device="cpu", compute_type="int8")
+    model = load_model(args.model)
     if args.lines:
         words = []
         for line in json.loads((args.lines / "lines.json").read_text(encoding="utf-8")):

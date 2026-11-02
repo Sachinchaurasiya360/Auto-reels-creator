@@ -45,7 +45,7 @@ replace:}}
 
 ## Off limits
 
-- **Topics I do not post about:** {{Sachin to confirm; assumed: politics, religion, stock tips}}
+- **Topics I do not post about:** betting apps, fraud content (Sachin, 2026-11-02); also assumed: politics, religion, stock tips
 - **Clients, numbers or names I cannot say publicly:** {{none known}}
 - **Claims I am not allowed to make:** InternHack is not incorporated yet: never call it a registered company.
   Never blame a named company for an incident that isn't documented (e.g. the ₹999 cache example is generic).

@@ -29,9 +29,9 @@ const MAX_CHARS = 3400; // API limit is 3,500 per request
 const PARAGRAPH_GAP_S = 0.35;
 
 const DEFAULTS = {
-  speaker: "kalpit_en_edtech",
+  speaker: "sunny_hi_reels",
   model: "bulbul:v4-flash",
-  lang: "en-IN", // code-mixed Hindi/English text works with en-IN on the *_en_* personas; use hi-IN with *_hi_* speakers
+  lang: "hi-IN", // *_hi_* speakers want hi-IN; code-mixed Hindi/English text works with en-IN on the *_en_* personas; use hi-IN with *_hi_* speakers
   pace: 1.1,
   rate: 24000,
 };

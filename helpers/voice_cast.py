@@ -5,7 +5,7 @@ each line with helpers/sarvam/tts.mjs, and concatenates with a short pause insid
 and a longer one when the speaker changes. Lines already voiced are reused, so a fix to one line
 re-voices only that line (delete its file, or pass --force to redo all).
 
-Cast (confirmed 2026-10-31): narrator mohit_hi_conversational, interviewer aditya_hi_conversational,
+Cast (narrator changed 2026-11-04, interview pair confirmed 2026-10-31): narrator sunny_hi_reels, interviewer aditya_hi_conversational,
 candidate advait_hi_character. A script may use at most two of them (interview: I + C only, no N).
 Every number must be written in Devanagari words; the script refuses to voice lines with digits.
 
@@ -21,7 +21,7 @@ import sys
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
-CAST = {"N": "mohit_hi_conversational", "I": "aditya_hi_conversational", "C": "advait_hi_character"}
+CAST = {"N": "sunny_hi_reels", "I": "aditya_hi_conversational", "C": "advait_hi_character"}
 SAME_SPEAKER_GAP = 0.22
 SPEAKER_CHANGE_GAP = 0.42
 RATE = 48000

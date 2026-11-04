@@ -31,7 +31,7 @@ details. Lines marked `{{…}}` still need Sachin; the skills never invent them.
 - **Do I swear:** no
 - **Emoji in captions:** rarely, at most one, usually none
 - **Face on camera:** faceless (drawn UI, phones, avatars; no photos)
-- **Voiceover or to-camera:** AI voiceover (Sarvam: narrator `mohit_hi_conversational`; interviews:
+- **Voiceover or to-camera:** AI voiceover (Sarvam: narrator `sunny_hi_reels`; interviews:
   Arjun = `aditya_hi_conversational`, Priya = `advait_hi_character`)
 - **Pace:** about 190 words per minute (`beats.py --wpm 190`); reels 60-80s, max 90s
 

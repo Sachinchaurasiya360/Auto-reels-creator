@@ -158,3 +158,42 @@ load bar to HANG), and "Next: Part 2/30" + a reason to follow. No competitor lis
 7. **Trends weekly, without a competitor list.** Run `/ig-viral` on the niche itself (Instagram search /
    hashtags in the logged-in Chrome: system design Hindi, placement prep, tech news India), keep
    `.claude/instagram/swipe.md`, and let it steer topics and hook formulas.
+
+## 2026-11-03 · From the stats: news needs a "tumhara" stake; YouTube titles must be searchable
+
+Not a verdict from Sachin; read from the §0 numbers (9 recent reels).
+
+- NavIC NVS-03 got 158 views in 7h with 19.7% of views from followers (the other reels: ~1%): Instagram never
+  tested it on strangers. Binance and Anthropic (news about an institution's money) stalled at ~160 the same way.
+  CNAP, also news, did 1,715 because it was about the viewer's own name.
+- YouTube: FASTag reached 656 and OTP 83 with question titles people type into search ("... kyon nahi?",
+  "... late kyun aata hai?"). Interview Shorts titled "Mock Interview: X" got 0-4.
+
+1. **Slot C (news, tool, myth) leads with the viewer's own stake** in the hook and the first 3 seconds: their phone,
+   money, name, exam, laptop. "India / ISRO / a company did X" alone is not a hook; say what changes for *them*.
+2. **YouTube titles are the search query**: a Hinglish "kyon / kaise / kya" question a student would type, the
+   concept word in it ("Load balancer kya hai? ..."), and "Mock Interview" only after the question, if at all.
+
+## 2026-11-03 · NavIC reel: too many components, hard to follow
+
+Sachin, on Tech News #3 (NavIC NVS-03): "you introduce too much components in the video, the satellite, ghadi and
+other ... it create difficult for the user ... don't make that much complicated. I shared you my junior's reel
+yesterday, that is quite good, the story is." (Reference: `Video-25627.mp4`, contact sheets `series/references/junior-part1-*`.)
+It also got 158 views in 7h (see the stats entry above): viewers left early.
+
+Sachin, clarifying: "for junior I am not saying the UI, it's story." What to copy from that reel is **how the story
+is told**, not its visual style (our look stays ours): a simple everyday situation ("app banayi, sab smooth chal raha
+tha"), the problem gets worse ("ek crore log aa gaye, payment fail, website crash"), then one analogy (one chai
+tapri) that grows step by step, and each concept arrives only when the story needs it ("toh kya karoge?" → more
+stalls = servers → a manager = load balancer). The viewer follows one storyline from start to end.
+
+1. **One story, one scene, few objects.** A reel introduces at most **3 new objects/ideas** in total (e.g. phone,
+   server, friend's phone). If the topic needs a 4th, cut it or save it for the named next part.
+2. **Each new object stays on screen and builds**: it is added to the same scene, never swapped for a new drawing.
+   No beat brings in an object that isn't used again later.
+3. **Simple over complete.** Drop side facts (history, launch details, extra numbers) even if true. The viewer should
+   be able to retell the reel in two sentences.
+4. **Story test:** each new concept answers a "toh ab kya?" the story just raised. If a concept could be cut without
+   breaking the storyline, cut it.
+5. **Gate check:** list the objects the reel introduces, in order. More than 3, or one used only once: rework
+   before showing.

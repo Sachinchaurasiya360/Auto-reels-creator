@@ -19,6 +19,7 @@ export const looks = {
   candidate: { skin: "#d9a07a", hair: "#1c1917", shirt: "#0074ff", hairStyle: "long" },
   student: { skin: "#b97a56", hair: "#1c1917", shirt: "#16a34a", hairStyle: "short" },
   mom: { skin: "#c68863", hair: "#3f3f46", shirt: "#be185d", hairStyle: "bun" },
+  dakiya: { skin: "#b97a56", hair: "#3f3f46", shirt: "#a16207", hairStyle: "short", beard: true }, // postman / counter uncle (khaki)
 } satisfies Record<string, Look>;
 
 // A head-and-shoulders bust in a 200x220 box. `talk` (0-1) opens the mouth.

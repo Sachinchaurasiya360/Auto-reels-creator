@@ -24,6 +24,7 @@ export function Reel({
   voSeconds,
   sfx = [],
   invert,
+  followLine,
   children,
 }: {
   series: SeriesKind;
@@ -33,6 +34,7 @@ export function Reel({
   voSeconds: number;
   sfx?: Sfx[];
   invert?: [number, number][];
+  followLine?: string; // the follow card's reason line, e.g. the named next part
   children: ReactNode;
 }) {
   return (
@@ -46,7 +48,7 @@ export function Reel({
         </Sequence>
       ))}
       <Sequence from={sec(voSeconds + 0.15)} name="follow tail">
-        <FollowCard tapAt={22} />
+        <FollowCard tapAt={22} line={followLine} />
       </Sequence>
     </SeriesFrame>
   );

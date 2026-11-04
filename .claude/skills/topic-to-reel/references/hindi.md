@@ -11,7 +11,7 @@
 ## Voice
 
 - Chatterbox (`helpers/voiceover.py`) is English-only. Hindi voice comes from Sarvam AI (Bulbul) via the API, or a recording the user supplies.
-- **Sarvam API:** `node helpers/sarvam/tts.mjs reels/<dir>/script.txt -o reels/<dir>/voiceover.wav` (keys `sarvam_api_key1` / `sarvam_api_key2` in `.env`, the second used when the first is out of credit; first run `npm install` in `helpers/sarvam/`). Defaults are the user's chosen settings: speaker `kalpit_en_edtech`, model `bulbul:v4-flash`, language `en-IN` (handles Hinglish code-mix), pace 1.1, 24 kHz. Other voices: `node helpers/sarvam/tts.mjs --speakers hi_` (e.g. `anand_hi_news`, `ratan_hi_documentary` with `--lang hi-IN`). Text over 3,400 characters is split at paragraph breaks automatically; existing output is kept unless `--force`.
+- **Sarvam API:** `node helpers/sarvam/tts.mjs reels/<dir>/script.txt -o reels/<dir>/voiceover.wav` (keys `sarvam_api_key1` / `sarvam_api_key2` in `.env`, the second used when the first is out of credit; first run `npm install` in `helpers/sarvam/`). Defaults are the user's chosen settings: speaker `sunny_hi_reels` (chosen 2026-11-04 over `kalpit_en_edtech` and `mohit_hi_conversational`), model `bulbul:v4-flash`, language `hi-IN` (handles Hinglish code-mix in Devanagari), pace 1.1, 24 kHz. Other voices: `node helpers/sarvam/tts.mjs --speakers hi_` (e.g. `anand_hi_news`, `ratan_hi_documentary` with `--lang hi-IN`). Text over 3,400 characters is split at paragraph breaks automatically; existing output is kept unless `--force`.
 - The script for Sarvam may mix Devanagari and English words (the user's sample does: "accounting adjustment", "IPO"); numbers over 4 digits need commas.
 
 ## Word timings

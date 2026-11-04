@@ -112,7 +112,7 @@ export function SeriesBadge({ series, episode }: { series: SeriesKind; episode: 
           fontVariantNumeric: "tabular-nums",
         }}
       >
-        {series === "mock-interview" ? "Ep" : "Day"} {episode}
+        Part {episode}
       </div>
     </div>
   );

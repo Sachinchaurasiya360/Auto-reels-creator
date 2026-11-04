@@ -58,6 +58,9 @@ belongs in the library.
 | `Sky` (2026-11-03) | `Satellite` (solar wings + its onboard `ClockFace`, `dead`, `glow`), `ClockFace`, `MapDot` (street map + blue location dot, `halo`, `lost`), `RangeRing` (a satellite's distance circle, `draw` 0-1) |
 | `Press` (2026-11-03) | news-reel proof in the Hyderabad-reference style: `SerifTitle` (Instrument Serif + italic sub line), `SourceCard` (source page; wrap the quote in `Marked`), `XPost`, `Marked` (black marker sweep, `hl` 0-1). `fonts.serif` added to `brand.ts` |
 | `CommentPrompt` (improved 2026-11-03) | now takes 2 or 3 options (chips wrap) |
+| `Story` (2026-11-04) | the one-scene story pattern (LESSONS 2026-11-03): `SceneLabel` ("// dakghar"), `Legend` (concept chips that accumulate, newest ringed), `Camera` (zoom/pan keyframes over one scene, `anchor` keeps zooms in the content band), `HeaderBand` (ground band behind badge/captions/legend), `Moment` (pop in/out between two reel-times), `usePopAt`. Use as direct children of `Reel`, no Beats |
+| `Reel.followLine` / `SeriesBadge` (improved 2026-11-04) | follow card reason line names the next part; badge reads "Part N" for every series |
+| `People.looks.dakiya` (2026-11-04) | khaki postman / counter-uncle bust |
 | `Transitions` (2026-11-02) | `whipPan`, `pushThrough`, `zoomBlur`, `lensZoom` (+ `TransitionSeries`, `linearTiming`) for real scene transitions between Beats |
 
 ## Third-party trial verdicts (2026-11-02, stills in `series/studio/out/sf/lib-sheet-*.png`, file `src/reels/styleframes/LibTrial.tsx`)

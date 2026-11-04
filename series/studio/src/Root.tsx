@@ -7,6 +7,9 @@ import { FASTAG_FRAMES, FastagToll } from "./reels/FastagToll";
 import { OTP_FRAMES, OtpSms } from "./reels/OtpSms";
 import { CACHE_FRAMES, CacheInterview } from "./reels/CacheInterview";
 import { ATM_FRAMES, AtmCash } from "./reels/AtmCash";
+import { WA_FRAMES, WhatsappTicks } from "./reels/WhatsappTicks";
+import { FLOCI_FRAMES, FlociAws } from "./reels/FlociAws";
+import { LB_FRAMES, LoadBalancerInterview } from "./reels/LoadBalancerInterview";
 import { DBI_FRAMES, DbIndexInterview } from "./reels/DbIndexInterview";
 import { NAV_FRAMES, NavicNvs03 } from "./reels/NavicNvs03";
 import { CNAP_FRAMES, CallerNameCnap } from "./reels/CallerNameCnap";
@@ -28,6 +31,9 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="fastag-toll" component={FastagToll} durationInFrames={FASTAG_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="otp-sms" component={OtpSms} durationInFrames={OTP_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="cache-interview" component={CacheInterview} durationInFrames={CACHE_FRAMES} fps={30} width={1080} height={1920} />
+      <Composition id="load-balancer" component={LoadBalancerInterview} durationInFrames={LB_FRAMES} fps={30} width={1080} height={1920} />
+      <Composition id="floci-aws" component={FlociAws} durationInFrames={FLOCI_FRAMES} fps={30} width={1080} height={1920} />
+      <Composition id="whatsapp-ticks" component={WhatsappTicks} durationInFrames={WA_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="atm-cash" component={AtmCash} durationInFrames={ATM_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="db-index-interview" component={DbIndexInterview} durationInFrames={DBI_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="navic-nvs03" component={NavicNvs03} durationInFrames={NAV_FRAMES} fps={30} width={1080} height={1920} />

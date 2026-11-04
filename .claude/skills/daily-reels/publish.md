@@ -1,7 +1,13 @@
 # Browser recipes: stats (§0) and scheduling (§7)
 
-Everything runs in the user's already-open Chrome through the browser-use plugin (`browser_exec`, Python
-with `js`, `cdp`, `click_at_xy`, `type_text`, `switch_tab`, `goto_url` pre-imported). Worked on 2026-11-02.
+Everything runs in the user's already-open Chrome in **remote-debugging mode** (CDP on the port in
+`%LOCALAPPDATA%\Google\Chrome\User Data\DevToolsActivePort`), through the browser-use plugin (`browser_exec`, Python
+with `js`, `cdp`, `click_at_xy`, `type_text`, `switch_tab`, `goto_url` pre-imported) or a raw CDP client on that
+port. Worked on 2026-11-02.
+
+**Only this method (Sachin, 2026-11-04):** "always use the browser debugging mode". Never Playwright, a fresh or
+headless browser, or a logged-out fetch. If the debugging connection fails, stop and tell Sachin; don't fall back.
+**Never the work profile** (Profile 4, sachin@nucleohq.com): only touch tabs in the personal profile's browser context.
 
 ## Ground rules
 

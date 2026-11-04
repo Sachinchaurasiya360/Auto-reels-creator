@@ -1,0 +1,151 @@
+- generic [ref=e11]:
+  - generic [ref=e13]:
+    - link [ref=e16] [cursor=pointer]:
+      - /url: /
+      - img "Instagram" [ref=e19]
+    - generic [ref=e30]:
+      - link "Log In" [ref=e32] [cursor=pointer]:
+        - /url: /accounts/login/?next=%2Fintern.hack%2Freels%2F&source=desktop_nav
+      - link "Sign Up" [ref=e34] [cursor=pointer]:
+        - /url: /accounts/emailsignup/
+  - main [ref=e35]:
+    - generic [ref=e37]:
+      - generic [ref=e38]:
+        - link [ref=e42] [cursor=pointer]:
+          - /url: /intern.hack/
+          - img "intern.hack's profile picture" [ref=e43]
+        - heading "intern.hack" [level=2] [ref=e50]
+        - list [ref=e53]:
+          - listitem [ref=e54]:
+            - link "25 followers" [ref=e56] [cursor=pointer]:
+              - /url: "#"
+              - generic [ref=e57]:
+                - generic "25" [ref=e58]
+                - text: followers
+          - listitem [ref=e59]:
+            - link "7 following" [ref=e61] [cursor=pointer]:
+              - /url: "#"
+              - generic [ref=e62]:
+                - generic [ref=e63]: "7"
+                - text: following
+        - generic [ref=e65]:
+          - generic [ref=e66]: InternHack | System Design
+          - generic [ref=e68]:
+            - button [ref=e69] [cursor=pointer]:
+              - generic [ref=e70]: Placement ki taiyari, real life examples se.System design, mock interviews, tech news aur AI tools, Hinglish mein.Free
+            - generic [ref=e71]:
+              - text: ...
+              - button "more" [ref=e72] [cursor=pointer]
+          - generic [ref=e74]:
+            - img "Link icon" [ref=e76]
+            - link "internhack.xyz" [ref=e80] [cursor=pointer]:
+              - /url: https://l.instagram.com/?u=http%3A%2F%2Finternhack.xyz%2F&e=AUBKscK6Buv-QKiUhje4E9qhSgLmLUqXN3BO251USnyEPMLrrX6TJXKhmuNOkRPo1pUtAIOMT5_hQ1Q1YZvczgJ9QIDpfd8jz9GaWRYiBmW2fKyNjUfNEKdl3EnHF2gJy9wjXZ8_PvR874Lwn7tQgw
+        - generic:
+          - menu
+      - generic [ref=e82]:
+        - tablist [ref=e83]:
+          - link [ref=e85] [cursor=pointer]:
+            - /url: /intern.hack/
+            - img "Posts" [ref=e87]
+          - link [ref=e90] [cursor=pointer]:
+            - /url: "#"
+            - img "Reels" [ref=e92]
+          - link [ref=e95] [cursor=pointer]:
+            - /url: "#"
+            - img "Tagged" [ref=e97]
+        - tabpanel
+  - contentinfo [ref=e104]:
+    - generic [ref=e105]:
+      - generic [ref=e107]:
+        - link "Meta" [ref=e109] [cursor=pointer]:
+          - /url: https://about.meta.com/
+        - link "About" [ref=e112] [cursor=pointer]:
+          - /url: https://about.instagram.com/
+        - link "Blog" [ref=e115] [cursor=pointer]:
+          - /url: https://about.instagram.com/blog/
+        - link "Jobs" [ref=e118] [cursor=pointer]:
+          - /url: https://about.instagram.com/about-us/careers
+        - link "Help" [ref=e121] [cursor=pointer]:
+          - /url: https://help.instagram.com/
+        - link "API" [ref=e124] [cursor=pointer]:
+          - /url: https://developers.facebook.com/docs/instagram
+        - link "Privacy" [ref=e127] [cursor=pointer]:
+          - /url: /legal/privacy/
+        - link "Terms" [ref=e130] [cursor=pointer]:
+          - /url: /legal/terms/
+        - link "Locations" [ref=e133] [cursor=pointer]:
+          - /url: /explore/locations/
+        - link "Popular" [ref=e136] [cursor=pointer]:
+          - /url: /popular/
+        - link "Instagram Lite" [ref=e139] [cursor=pointer]:
+          - /url: /web/lite/
+        - link "Meta AI" [ref=e142] [cursor=pointer]:
+          - /url: https://www.meta.ai/?utm_source=foa_web_footer
+        - link "Muse" [ref=e145] [cursor=pointer]:
+          - /url: https://muse.ai/
+        - link "Threads" [ref=e148] [cursor=pointer]:
+          - /url: https://www.threads.com/
+        - link "Contact Uploading & Non-Users" [ref=e151] [cursor=pointer]:
+          - /url: https://www.facebook.com/help/instagram/261704639352628
+        - link "Meta Verified" [ref=e154] [cursor=pointer]:
+          - /url: /accounts/meta_verified/?entrypoint=web_footer
+      - generic [ref=e156]:
+        - generic [ref=e157] [cursor=pointer]:
+          - generic [ref=e158]:
+            - generic [ref=e159]: English
+            - img "Down chevron icon" [ref=e162]
+          - combobox "Switch Display Language" [ref=e164]:
+            - option "Afrikaans"
+            - option "العربية"
+            - option "Čeština"
+            - option "Dansk"
+            - option "Deutsch"
+            - option "Ελληνικά"
+            - option "English" [selected]
+            - option "English (UK)"
+            - option "Español (España)"
+            - option "Español"
+            - option "فارسی"
+            - option "Suomi"
+            - option "Français"
+            - option "עברית"
+            - option "Bahasa Indonesia"
+            - option "Italiano"
+            - option "日本語"
+            - option "한국어"
+            - option "Bahasa Melayu"
+            - option "Norsk"
+            - option "Nederlands"
+            - option "Polski"
+            - option "Português (Brasil)"
+            - option "Português (Portugal)"
+            - option "Русский"
+            - option "Svenska"
+            - option "ภาษาไทย"
+            - option "Filipino"
+            - option "Türkçe"
+            - option "中文(简体)"
+            - option "中文(台灣)"
+            - option "বাংলা"
+            - option "ગુજરાતી"
+            - option "हिन्दी"
+            - option "Hrvatski"
+            - option "Magyar"
+            - option "ಕನ್ನಡ"
+            - option "മലയാളം"
+            - option "मराठी"
+            - option "नेपाली"
+            - option "ਪੰਜਾਬੀ"
+            - option "සිංහල"
+            - option "Slovenčina"
+            - option "தமிழ்"
+            - option "తెలుగు"
+            - option "اردو"
+            - option "Tiếng Việt"
+            - option "中文(香港)"
+            - option "Български"
+            - option "Français (Canada)"
+            - option "Română"
+            - option "Српски"
+            - option "Українська"
+        - generic [ref=e165]: © 2026 Instagram from Meta

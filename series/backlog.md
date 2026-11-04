@@ -5,6 +5,7 @@ Run `topics.py check` on a topic before researching it. Reorder by what performs
 
 ## Slot A: Real Life System Design
 
+0. **NEXT (promised in Part 5, WhatsApp ticks): Part 6: Swiggy wale bhaiya map pe live kaise chalte hain**
 1. Chai stall QR pe UPI: tumhare phone se dukaandaar ke soundbox tak paisa kaise jaata hai
 2. Tatkal 10 baje: lakhon log ek second mein, IRCTC kaise sambhalta hai
 3. Concert khatam, sab ek saath cab book karte hain: Uber surge pricing kaise decide hoti hai
@@ -23,6 +24,7 @@ Run `topics.py check` on a topic before researching it. Reorder by what performs
 
 ## Slot B: Mock Interview
 
+0. **NEXT (promised in Part 5, load balancer): Part 6: Zomato ka order kabhi kho kyun nahi jaata (message queue)**
 1. Rate limiter design karo
 2. Cache kab use karein, aur cache invalidation
 3. Load balancer kaise kaam karta hai
@@ -39,6 +41,8 @@ Run `topics.py check` on a topic before researching it. Reorder by what performs
 ## Slot C: Rotating
 
 Mon/Thu tech news, Tue/Fri GitHub pick, Wed/Sat AI or dev tool, Sun myth. Mostly picked fresh from that day's research; evergreen fallbacks:
+
+0. **NEXT ai-tool (Wednesday, promised in Tool of the Day Part 2): Part 3: Floci pe pehla resume project (S3 + DynamoDB + Lambda notes-share app)**
 
 1. Myth: incognito mode tumhe hide karta hai
 2. Myth: zyada RAM matlab fast phone

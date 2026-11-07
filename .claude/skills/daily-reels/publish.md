@@ -9,6 +9,34 @@ port. Worked on 2026-11-02.
 headless browser, or a logged-out fetch. If the debugging connection fails, stop and tell Sachin; don't fall back.
 **Never the work profile** (Profile 4, sachin@nucleohq.com): only touch tabs in the personal profile's browser context.
 
+## Scripts first (Sachin 2026-11-04: "most of the steps are common day to day, optimize them")
+
+Run these instead of rediscovering buttons; the manual notes below are only for when a script breaks (then fix
+the script, not just the run). All live in `helpers/publish/` and talk to one persistent connection:
+
+```bash
+cd helpers/publish
+python cdpd.py &                       # ONE "Allow remote debugging" prompt per session; keep it running
+python cdpc.py tabs                    # pick tabs whose ctx matches the personal profile (personal gmail/github)
+python open_tab.py <github_tab> https://www.instagram.com/intern.hack/    # new tab IN the personal profile
+python open_tab.py <github_tab> "https://studio.youtube.com/channel/UCsBOnrfOFU-v_wPRu_VH7EA/videos/upload?d=ud"
+python ig_schedule.py <ig_tab> <reel dir> <day> <H> <AM|PM>         # stops before Schedule, writes ig_<dir>.png
+python ig_schedule.py <ig_tab> <reel dir> <day> <H> <AM|PM> --go-only  # after checking the png: click Schedule
+python yt_schedule.py <studio_tab> <reel dir> <slug> <HH:MM> --go    # prints "set to public on ..." + Short URL
+```
+Run `cdpd.py` with the system Python (`C:\Users\mrsac\AppData\Local\Programs\Python\Python312\python.exe`): the
+repo `.venv` has no `websockets` (2026-11-05). HTTP 403 from Chrome = the Allow prompt was missed: rerun and click Allow.
+`open_tab.py` can't start from a `chrome://newtab` tab (no page JS); in a profile with only a blank tab, `goto` that tab.
+
+```bash
+python ig_stats.py <ig_tab> <code> [<code> ...] > stats.json   # §0: page + insights per reel (JS click opens insights;
+                                                                  # a CDP mouse click on "View insights" does nothing)
+python ig_comment.py <ig_tab> <reel code> <reel dir>             # posts post.md's "Pinned comment" (run from repo root,
+                                                                  # PYTHONPATH=helpers/publish); skips if already there
+```
+Never `cdpc.py new`: CDP opens it in the default profile, which can be the work profile. Never click inside
+Instagram at guessed coordinates outside a dialog (a stray click opened a random profile once).
+
 ## Ground rules
 
 - Reuse the Instagram and YouTube Studio tabs (`list_tabs()`, match by URL). Don't open duplicates, and
@@ -86,3 +114,22 @@ headless browser, or a logged-out fetch. If the debugging connection fails, stop
    wrong, open `https://studio.youtube.com/video/<id>/edit` → click `ytcp-video-metadata-visibility` →
    pick the time from the list → `Done` → `Save`, then reload and re-check.
 8. Studio's Shorts list: each new Short shows "Scheduled" with the right date; no stray "final" drafts.
+
+## Fixing a wrong Instagram time (2026-11-06)
+`ig_schedule.py --go` once saved 3 of 4 reels at "now" (keys lost). The script now reads the time back and refuses to
+schedule on a mismatch. To fix an already scheduled post: `scheduled_content/` → click its thumbnail → the Edit dialog
+has `input[aria-label=Hours|Minutes|AM PM]` (scroll into view, focus each, type keys once) → check the screenshot shows
+the right time → click `Save` (bottom right) → reload and re-read every caption's time. Save each dialog before
+opening the next one.
+
+## YouTube failures seen on 2026-11-06 (fixed in yt_schedule.py)
+- Title stayed "final" and description empty: Studio sets the file name as title a few seconds after the upload starts,
+  overwriting an early fill. The script now waits, re-reads both boxes and refills; it stops if they don't stick.
+- Tags typed onto the end of the description: a click on the tags input left focus in the description. Now focus the
+  input with JS, check `document.activeElement`, and stop if the description changed.
+- `<` / `>` are rejected in title and description (the humanizer turns "→" into "->"): the script refuses them.
+- Late time slots (09:00+) are below the fold of the slot list: scroll the `tp-yt-paper-item` into view before clicking.
+- A failed run leaves its upload dialog open; the next run then attaches metadata to the WRONG video. Run one reel at a
+  time, check the screenshot (title + duration + time) before `--go`, and use `--resume` to finish an open dialog.
+- Fixing a scheduled Short: `studio.youtube.com/video/<id>/edit` → description `#textbox`[1], "Show more" → tags input,
+  `#save`; reload and re-read.

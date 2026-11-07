@@ -11,7 +11,7 @@ export function CommentPrompt({
   top = 620,
 }: {
   question: string;
-  options: [string, string] | [string, string, string];
+  options: [string, string] | [string, string, string] | [string, string, string, string]; // 4 = short one-word answers (operators, brands)
   typed?: string;
   top?: number;
 }) {

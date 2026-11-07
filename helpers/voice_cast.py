@@ -11,6 +11,7 @@ Every number must be written in Devanagari words; the script refuses to voice li
 
 Usage:
     python helpers/voice_cast.py reels/<dir>/script_tts.txt -o reels/<dir>/voiceover.wav [--pace 1.1] [--force]
+    English teardown (slot A): python helpers/voice_cast.py reels/<dir>/script_tts.txt -o ... --narrator shubh_en_narration --lang en-IN
 """
 
 import argparse
@@ -47,13 +48,17 @@ def main() -> int:
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     p.add_argument("script", type=Path)
     p.add_argument("-o", "--output", type=Path, required=True)
-    p.add_argument("--pace", default="1.1")
+    p.add_argument("--pace", default="1.0")
     p.add_argument("--force", action="store_true")
+    p.add_argument("--narrator", help="override the N voice (e.g. shubh_en_narration for English teardowns)")
+    p.add_argument("--lang", default="hi-IN", help="hi-IN (default) or en-IN for English scripts")
     args = p.parse_args()
+    if args.narrator:
+        CAST["N"] = args.narrator
     sys.stdout.reconfigure(encoding="utf-8")  # Devanagari progress lines on a Windows console
 
     lines =[l.strip() for l in args.script.read_text(encoding="utf-8").splitlines() if l.strip() and not l.startswith("#")]
-    problems = check_script(lines)
+    problems = check_script(lines) if args.lang == "hi-IN" else []
     if problems:
         print("script_tts.txt is not ready to voice (series/LESSONS.md, 2026-11-02 numbers + voices):")
         print("\n".join(f"  {msg}" for msg in problems))
@@ -68,7 +73,7 @@ def main() -> int:
         out = parts_dir / f"{i:02d}_{who}.wav"
         if args.force or not out.exists():
             cmd = ["node", str(REPO / "helpers/sarvam/tts.mjs"), "--text", text, "-o", str(out),
-                   "--speaker", CAST[who], "--lang", "hi-IN", "--pace", args.pace, "--force"]
+                   "--speaker", CAST[who], "--lang", args.lang, "--pace", args.pace, "--force"]
             print(f"{i:02d} {who} {CAST[who]}: {text[:60]}")
             subprocess.run(cmd, check=True)
         parts.append((who, out))

@@ -5,7 +5,7 @@ Run `topics.py check` on a topic before researching it. Reorder by what performs
 
 ## Slot A: Real Life System Design
 
-0. **NEXT (promised in Part 5, WhatsApp ticks): Part 6: Swiggy wale bhaiya map pe live kaise chalte hain**
+0. **NEXT (promised in Part 7, Google Maps traffic): Part 8: Ola, Uber ka surge price kaun decide karta hai** (backlog 3, concert-end cab surge)
 1. Chai stall QR pe UPI: tumhare phone se dukaandaar ke soundbox tak paisa kaise jaata hai
 2. Tatkal 10 baje: lakhon log ek second mein, IRCTC kaise sambhalta hai
 3. Concert khatam, sab ek saath cab book karte hain: Uber surge pricing kaise decide hoti hai
@@ -24,7 +24,7 @@ Run `topics.py check` on a topic before researching it. Reorder by what performs
 
 ## Slot B: Mock Interview
 
-0. **NEXT (promised in Part 5, load balancer): Part 6: Zomato ka order kabhi kho kyun nahi jaata (message queue)**
+0. **NEXT (promised in Part 7, consistent hashing): Part 8: network toota, bank ka purana balance dikhaye ya ruke? (CAP theorem)**
 1. Rate limiter design karo
 2. Cache kab use karein, aur cache invalidation
 3. Load balancer kaise kaam karta hai

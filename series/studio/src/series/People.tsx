@@ -20,6 +20,9 @@ export const looks = {
   student: { skin: "#b97a56", hair: "#1c1917", shirt: "#16a34a", hairStyle: "short" },
   mom: { skin: "#c68863", hair: "#3f3f46", shirt: "#be185d", hairStyle: "bun" },
   dakiya: { skin: "#b97a56", hair: "#3f3f46", shirt: "#a16207", hairStyle: "short", beard: true }, // postman / counter uncle (khaki)
+  rider: { skin: "#a86b4a", hair: "#1c1917", shirt: "#f97316", hairStyle: "short" }, // delivery bhaiya (orange tee, 2026-11-05)
+  cook: { skin: "#b97a56", hair: "#292524", shirt: "#f5f5f4", hairStyle: "short", beard: true }, // dhaba cook (white, 2026-11-05)
+  agent: { skin: "#c68863", hair: "#1c1917", shirt: "#7c3aed", hairStyle: "bun" }, // customer-care agent (2026-11-05)
 } satisfies Record<string, Look>;
 
 // A head-and-shoulders bust in a 200x220 box. `talk` (0-1) opens the mouth.
@@ -96,6 +99,7 @@ export function CallTile({
   mood?: "neutral" | "happy" | "shocked";
   tint?: string;
 }) {
+  const chip = Math.max(14, Math.min(32, Math.round(height * 0.11)));
   return (
     <div
       style={{
@@ -113,25 +117,30 @@ export function CallTile({
       <div style={{ position: "absolute", left: "50%", bottom: -4, transform: "translateX(-50%)" }}>
         <Person look={look} size={height * 0.78} talk={talk} mood={mood} />
       </div>
+      {/* Name chip scales with the tile and sits on the shoulders (below ~0.7h), never over the face:
+          a fixed 32px chip covered the whole face on small tiles (load-balancer reel, h=115). */}
       <div
         style={{
           position: "absolute",
-          left: 18,
-          bottom: 18,
-          padding: "8px 18px",
-          borderRadius: 14,
+          left: "50%",
+          transform: "translateX(-50%)",
+          bottom: Math.round(height * 0.04),
+          padding: `${Math.round(chip * 0.22)}px ${Math.round(chip * 0.55)}px`,
+          borderRadius: Math.round(chip * 0.45),
           background: "rgba(12,10,9,0.72)",
           color: "#fff",
           fontFamily: fonts.body,
           fontWeight: 700,
-          fontSize: 32,
+          fontSize: chip,
+          lineHeight: 1,
+          whiteSpace: "nowrap",
           display: "flex",
-          gap: 10,
+          gap: Math.round(chip * 0.3),
           alignItems: "center",
         }}
       >
         {name}
-        <span style={{ fontWeight: 500, fontSize: 24, opacity: 0.75 }}>{role}</span>
+        {height >= 260 ? <span style={{ fontWeight: 500, fontSize: Math.round(chip * 0.75), opacity: 0.75 }}>{role}</span> : null}
       </div>
       {speaking > 0.05 ? (
         <div style={{ position: "absolute", right: 22, top: 22, display: "flex", gap: 5, alignItems: "flex-end", height: 36 }}>

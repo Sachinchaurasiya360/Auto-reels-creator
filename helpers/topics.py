@@ -132,7 +132,7 @@ def cmd_add(args) -> int:
 
 
 def cmd_next(args) -> int:
-    eps = [r.get("episode") or 0 for r in load() if r["slot"] == args.slot]
+    eps = [r.get("episode") or 0 for r in load() if r["slot"] == args.slot and not r.get("pulled")]
     print(max(eps, default=0) + 1)
     return 0
 

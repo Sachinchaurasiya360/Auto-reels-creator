@@ -1,6 +1,7 @@
 // InternHack series brand. Values come from the product itself
 // (../InternHack/client/src/index.css and the logo), so the reels and the site read as one thing.
 
+import { loadFont as loadCaveat } from "@remotion/google-fonts/Caveat";
 import { loadFont as loadInstrumentSerif } from "@remotion/google-fonts/InstrumentSerif";
 import { loadFont as loadInter } from "@remotion/google-fonts/Inter";
 import { loadFont as loadJetBrainsMono } from "@remotion/google-fonts/JetBrainsMono";
@@ -14,6 +15,8 @@ export const fonts = {
   body: loadInter("normal", { weights: ["400", "500", "600", "700", "800"], subsets: ["latin"] }).fontFamily,
   mono: loadJetBrainsMono("normal", { weights: ["500", "700"], subsets: ["latin"] }).fontFamily,
   // editorial titles for news reels (Press.tsx); italic is loaded too
+  // marker handwriting for the whiteboard (Whiteboard.tsx)
+  hand: loadCaveat("normal", { weights: ["600", "700"], subsets: ["latin"] }).fontFamily,
   serif: (loadInstrumentSerif("italic", { subsets: ["latin"] }), loadInstrumentSerif("normal", { subsets: ["latin"] }).fontFamily),
 };
 
@@ -72,7 +75,7 @@ const shadcnTokens = {
 export const remocnTheme: RemocnTheme = shadcnTokens;
 export const snapTheme: SnapCnTheme = { ...shadcnTokens, fontFamily: fonts.body };
 
-export type SeriesKind = "system-design" | "mock-interview" | "tech-news" | "github-pick" | "ai-tool" | "myth";
+export type SeriesKind = "system-design" | "mock-interview" | "tech-news" | "github-pick" | "ai-tool" | "myth" | "andar-kya-hai";
 
 export const seriesLabel: Record<SeriesKind, string> = {
   "system-design": "Real Life System Design",
@@ -81,4 +84,5 @@ export const seriesLabel: Record<SeriesKind, string> = {
   "github-pick": "GitHub Pick",
   "ai-tool": "Tool of the Day",
   myth: "Galat Samajh Rahe Ho",
+  "andar-kya-hai": "What's Inside?",
 };

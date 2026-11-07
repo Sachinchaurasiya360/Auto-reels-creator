@@ -1,15 +1,39 @@
 ---
 name: daily-reels
-description: Make today's 3 InternHack series reels end to end (Real Life System Design, Mock Interview, rotating Tool/News/GitHub/Myth): pull the previous reels' stats from Instagram and YouTube, pick non-repeating topics, research, Hinglish scripts, one approval gate, Sarvam voice, Remotion build on the GPU, render, post copy, log, then schedule all 3 on Instagram and YouTube. Use when the user types /daily-reels or asks for "today's reels".
+description: Make today's 3 InternHack reels end to end (Andar Kya Hai? English machine teardown, free tool / GitHub repo with comment-to-DM, end-to-end system design; plus Tech News Decoded on big-news days): pull the previous reels' stats from Instagram and YouTube, pick non-repeating topics, research, Hinglish scripts, one approval gate, Sarvam voice, Remotion build on the GPU, render, post copy, log, then schedule all 3 on Instagram and YouTube. Use when the user types /daily-reels or asks for "today's reels".
 ---
 
 # Daily reels
 
-Three reels a day for InternHack, built the way `series/PLAN.md` §7 describes. This skill is the
+Three reels a day for InternHack (a fourth on big-news days), built the way `series/PLAN.md` §7 describes. This skill is the
 checklist; the plan, the lessons file and the log hold the details and stay the source of truth.
 
 **Doubt rule (Sachin, 2026-11-02):** if something is unclear (a topic, a time slot, whether a post
 went through, a platform asking a new question), ask. Otherwise proceed without stopping, apart from the gate in §4.
+
+**Experiment rule (Sachin, 2026-11-06 night): nothing here is fixed.** Format, references, series, slots, length and the
+number of reels (3 or 4) follow the stats. §0 must end with "what I'm changing today and why" (1-3 experiments, each with
+the metric that proves it), and the gate proposes a 4th reel when a topic is important or a kind clearly converts.
+
+**Daily lineup (Sachin, 2026-11-07, LESSONS same date). @intern.hack is deep tech, anything that looks cool, not only
+placement prep.** 3 reels a day + a 4th on big-news days (~3x a week). Judge the lanes after 7 days (Nov 14): cut or
+rework the weakest, give the strongest a second slot.
+
+| slot | series | length | language | build |
+|---|---|---|---|---|
+| A · 9 AM | **What's Inside?** machine teardown (light theme) (rocket engine, flying car, jet engine, F1 brake, PSLV stage...) | ≤150s (~90-120s) | **English** | `anatomy` figure (or Opuscar 3D: Hologram HUD / Exploded Teardown) → `helpers/anatomy_render.mjs` frames → Remotion/ffmpeg + VO + SFX |
+| C · 1 PM | **Free tool / GitHub repo** | 35-50s | Hinglish | series/studio (Remotion) |
+| B · 7 PM | **System design, end-to-end** (Real Life SD and Mock Interview alternate days) | ≤150s (110-140s) | Hinglish | series/studio (Remotion); Opuscar Blueprint look is an experiment |
+| +1 news days | **Tech News Decoded** (Starship, chips, AI launches) | 45-70s | Hinglish | Opuscar Visual Investigation / Satellite Briefing or studio |
+
+- Every reel ends on a **comment keyword** that Sachin's auto-DM answers: teardowns "Comment ENGINE / <WORD> for the
+  blueprint PDF" (print it with anatomy's `scripts/print.mjs`), tools "Comment <WORD>, link DM mein", system design
+  "Comment NOTES". Put keyword + what to DM at the top of `post.md` so Sachin can load it.
+- Every reel gets the **SFX pass**: a sound on each visual event (clank on part separation, hiss, rumble + boom on
+  ignition, tick on counters, paper on cheat sheets/PDF, typing on terminals), from `series/studio/public/sfx`,
+  `reels/_library/sfx`, or synthesised with Opuscar `core/audio/sfx.py` (`$LIB=C:/Users/mrsac/lemo-opuscar`).
+- Teardowns: facts in `FACTS.md` (claim + source URL); show only sourced numbers; say "model" when it's not exact CAD.
+  Third-party figures (e.g. anatomy's MIT Raptor example) are credited in the caption.
 
 ## Read first (every run)
 
@@ -64,8 +88,10 @@ Instagram and YouTube Studio tabs and never touch other tabs (Medium etc.). Reci
 
 ## 1. Topics
 
-- `python helpers/topics.py today` gives the slots: A system design, B mock interview, C rotating type.
-- Pick 3 (backlog first, or fresh from research for news/GitHub/tool days), weighted by what §0 showed works.
+- Slots follow the lineup table above (A teardown, C free tool, B system design; `helpers/topics.py today` still
+  prints the old A/B/C meaning until it's updated, so use the table).
+- Pick 3 (backlog first, or fresh from research for tool / news days), weighted by what §0 showed works.
+  Teardown topics: wow factor + a news hook when there is one (e.g. Tesla Roadster thruster demo, Starship Raptor 3).
   The "next part" promised at the end of a slot's last reel is that slot's topic today (LESSONS 2026-11-02 goal).
 - Weekly (or when `.claude/instagram/swipe.md` is older than 7 days): `/ig-viral` on the niche itself (no
   competitor list yet): Instagram search / hashtags in the logged-in Chrome.
@@ -81,6 +107,10 @@ number gets a source URL; mark anything unverified. Each reel must be complete o
 
 ## 3. Scripts
 
+- **Teardown (slot A) scripts are English**: plain `script.txt` (Sarvam English voice or Kokoro via Opuscar
+  `core/tts/tts.py`; pick one and lock it after the first reel), no Devanagari file. Spine: news/wow hook → whole
+  machine → it comes apart, one line per key part with its real number → how it runs (fires / lifts) → the one insane
+  number → comment keyword. The other rules below (Hinglish, Devanagari, analogy) are for slots B, C and news.
 - `script.txt`: Roman Hinglish, `*keyword*` for hero words, `I:` / `C:` / `N:` speaker prefixes.
 - `script_tts.txt`: the same lines in Devanagari (English tech words stay Latin), **same word count per
   line**. Sarvam mispronounces Roman Hinglish, so it reads this file. Check pairing before the gate.
@@ -88,13 +118,23 @@ number gets a source URL; mark anything unverified. Each reel must be complete o
 - One comment driver per reel, different kind from yesterday's (see LOG.md).
 - **Follow reason** (LESSONS 2026-11-02 goal): "Part N" of a named series, ending on the named next part + follow.
 - **One analogy that builds** into the whole mechanism, shown as one evolving scene with an accumulating legend.
-- **Pace:** `voice_cast.py --pace 1.0-1.1`, ~150 wpm; cut words if long, never speed up. Narrated slots: one voice.
-- **Retention first** (LESSONS.md 2026-11-01): 60-80s (max 90s, ~150-200 words at ~150 wpm), 2+ humour beats and a punchline at every re-hook, everyday Indian examples only, a hook that
+- **Voice (locked 2026-11-05, Sachin liked it):** narrator `sunny_hi_reels` (bulbul:v4-flash) at `--pace 1.0`, ~150 wpm;
+  cut words if long, never speed up. Narrated slots: one voice. Don't vary the voice any more.
+- **Explain the real technology** (LESSONS 2026-11-05): the analogy only opens the door. At least ~40% of the runtime
+  names the real components and walks the actual steps in order (with one real number). Mark analogy vs tech lines at the gate.
+- **1-2 "you've seen this, here's why" beats** per reel: a glitch the viewer has noticed (lift → bike freezes,
+  tall building → GPS 50 m off → teleport) explained by the mechanism just taught.
+- **Retention first** (LESSONS.md 2026-11-01; **hard cap 150 s**, Sachin 2026-11-07 night; flow = LESSONS 2026-11-07 (night): every technique enters as the fix to a problem, junior spine, ≤6 new terms), 2+ humour beats and a punchline at every re-hook, everyday Indian examples only, a hook that
   opens a loop closed only in the last 5s, a re-hook every 8-10s, jargon named last, the last line looping
   to the first. Score 3 hooks with `.claude/skills/ig-reel/hookscore.py` (top must be 50+) and run
   `beats.py --target <s>` until clean. The scorer only knows English stake words and `$`; also score an
-  English gloss and show both. Voice, pace and format are free to change: vary one per day and log it.
+  English gloss and show both. Pace and format are free to change (voice is locked): vary one per day and log it.
 - Mock interview: interviewer **Arjun**, candidate **Priya** (LESSONS 2026-11-02).
+- **Mock interview is technical first (LESSONS 2026-11-06, Part 6 was deleted for this).** The analogy and object
+  rules above do NOT apply to slot B. Priya answers like a real candidate: real components, flow in order, one real
+  failure + fix, the interviewer's follow-up/trade-off, one real number. ≥75% of lines technical; an example is
+  optional and ≤2 lines. The main visual is the labelled architecture diagram. At the gate, tick the topic's
+  must-say terms from research.md and show the tech-line %.
 
 ## 4. Gate (the only stop)
 
@@ -124,6 +164,15 @@ PYTHONUTF8=1 python helpers/captions_roman.py reels/<dir>/script.txt reels/<dir>
   snapcn, onda via `Stage` for 16:9 components); any new reusable scene goes into `src/series/` and
   `CATALOG.md`. Only use `invert` on `Reel` over a dark full-frame background, or captions vanish.
   Keep punch-in targets inside the frame: content at x < 120 or x > 960 gets cut at 1.15-1.2x.
+- **Teardown build (slot A):** build or adapt the figure with the `anatomy` skill (lay it out for 1080x1920), then
+  `node helpers/anatomy_render.mjs <page.html> <framesDir> <fromS> <toS> [fps] [W] [H]` steps the page's own
+  rAF/setTimeout motion on a virtual clock and writes one JPEG per frame (31s ≈ 2m40s). Drive the figure's tour from
+  the VO timings, encode with ffmpeg, then overlay captions/VO/SFX in a Remotion composition (`OffthreadVideo`).
+  Gotchas (2026-11-07): anatomy pages start their own idle tour **at load**, so the first cue must be
+  `{"t":0.05,"key":"Escape"}` (otherwise parts light up during the hook and the first Space closes instead of opens).
+  Render light theme with a reel CSS (`--css`, e.g. reels/2026-11-08-raptor-engine/reel-light.css: unfocused parts
+  opacity 0.16, the named part orange) so the part reads on a phone. Split long renders into 3 parallel `--from/--to`
+  chunks (each replays state from 0 without screenshots) and concatenate. Delete the old out/*.mp4 before re-rendering.
 - `npx tsc --noEmit`, then `npx remotion render <id> out/<slug>.mp4 --codec=h264 --crf=18 --gl=angle --concurrency=10`.
   Always render on the GPU (Sachin, 2026-11-02); `remotion.config.ts` sets the same defaults. About 3-4.5 min per reel.
 - Frame-check every beat from the rendered file (contact sheets); fix overlaps, empty or tiny beats,
@@ -153,8 +202,8 @@ PYTHONUTF8=1 python helpers/captions_roman.py reels/<dir>/script.txt reels/<dir>
 
 ## 7. Publish: schedule all 3 on Instagram and YouTube (after the build, no extra stop)
 
-Recipes in `publish.md`. Default slots for the posting day, IST: **A at 9:00 AM, C at 1:00 PM, B at 7:00 PM**
-(news at lunch while it's fresh, interview in the evening when students are free). Use the slots agreed at the gate
+Recipes in `publish.md`. Default slots for the posting day, IST: **A (teardown) at 9:00 AM, C (free tool) at 1:00 PM,
+B (system design) at 7:00 PM**, and a news reel at the next free hour after the story breaks. Use the slots agreed at the gate
 if they differ; if the §0 stats show a better hour, propose it at the gate.
 
 - **Instagram:** Create → Post → `final.mp4` → crop **9:16** → cover `cover.png` → caption from

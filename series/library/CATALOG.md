@@ -71,6 +71,10 @@ belongs in the library.
 | `Terminal` (2026-11-07) | `Terminal` (dark terminal; `typed` = characters shown across the whole session, outputs land after each command; tones ok/err/dim), `Pipeline` (service tiles S3 / Lambda / DynamoDB / link with arrows, `lit` count, a file `chip` travelling) |
 | `Desktop` (2026-11-07) | laptop desktop: `Desktop` (wallpaper + taskbar), `FileIcon` (ext badge, `glow`), `Cursor`, `KeyCap` (`down` 0-1), `Donut` (radial menu at the cursor, `open`, `active` segment) |
 | `People.CallTile` (fixed 2026-11-06) | name chip scales with the tile and sits on the shoulders; never covers the face (role hidden under 260 px) |
+| `Keyword` (2026-11-09) | `KeywordCard` the comment-keyword ending (dark card, word in lime, reply box typing it, what lands in the DM); moved out of PhotoCraftTool, used by NetMerge, IplLiveStreaming |
+| `Headline` (2026-11-10) | big 2-4 word chapter headline per scene under the captions (y 570, `accent` word coloured, optional `tag` chip; at 0 it is already on frame 0). The HowHub fix (LESSONS 2026-11-09): sound-off viewers read the story from headlines. Used by LocalSendTool, LiveScorePush |
+| `SysNode` `size` (improved 2026-11-10) | scales a node from its top-left corner; 1.2-1.35 when a scene has 2-4 nodes so they read on a phone |
+| `Stream` (2026-11-09) | live streaming: `CricketFrame` (drawn broadcast: bowler `run`, `six`), `StreamPhone` (LIVE badge, spinner `buffering`, `quality` badge, `blur`, signal `bars`), `NeighbourTV`, `SegTile`, `LadderStack` (bitrate ladder, `pick`), `LiveBar` (live edge vs your playhead), `PaperRoute` (press -> depot -> hawkers -> letterbox analogy with mapping `tags`), `Bars`, `Spinner` |
 | `Transitions` (2026-11-02) | `whipPan`, `pushThrough`, `zoomBlur`, `lensZoom` (+ `TransitionSeries`, `linearTiming`) for real scene transitions between Beats |
 
 ## Third-party trial verdicts (2026-11-02, stills in `series/studio/out/sf/lib-sheet-*.png`, file `src/reels/styleframes/LibTrial.tsx`)

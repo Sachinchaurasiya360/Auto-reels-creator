@@ -31,6 +31,12 @@ matcher regexes are English). Full records: `series/log/topics.jsonl`.
 | 2026-11-08 | A whats-inside 1 (EN, light) | Raptor engine teardown | Every Starship flight this year had engine trouble. You're looking at that engine. | News reveal + proof | 119s | 9:00 AM, comment ENGINE | | | |
 | 2026-11-08 | C github pick 3 | PhotoCraft (free Photoshop) | Photoshop ka bill ₹6,899 saal ka. Ye free hai, aur tumhari PSD bhi kholta hai. | Price contrast | 63s | 1:00 PM, comment PHOTO | | | |
 | 2026-11-08 | B system design 9 | Train call handover (junior-spine rewrite) | Train 160 pe, ghar pe call chal rahi hai. Tower peeche chhoot gaya, phir bhi call nahi kati. Kaise? | Everyday mystery + question | 126s | 7:00 PM, comment NOTES | | | |
+| 2026-11-09 | A whats-inside 2 (EN, light) | Roadster thrusters teardown | Tesla says it flies. The FAA says no. Let's open it. | Contrast (claim vs authority) | 122s | 9:00 AM, comment ROADSTER | | | |
+| 2026-11-10 | B system design 11 | Live score before video (event, polling, pub/sub, push, jitter) | Last ball. Phone pe notification aayi: WICKET! Aur stream pe ball daali bhi nahi. | 21 Mid-Sentence Start | 130s | 1:00 PM (slot swap), comment NOTES | | | |
+| 2026-11-10 | C github pick 6 | LocalSend (phone to laptop, no WhatsApp) | Laptop pe photo bhejne ke liye khud ko WhatsApp karna band karo. | Stop doing X (warning) | 43s | 7:00 PM, comment SEND | | | |
+| 2026-11-09 | C github pick 4 | net-merge (Wi-Fi + phone data) | Wi-Fi akela: 121 Mbps. Wi-Fi aur tumhara phone saath mein: 303. | 23 Statistic | 45s | 1:00 PM, comment SPEED | | | | DELETED by Sachin 2026-11-09 (7 views, 86% followers)
+| 2026-11-09 | B system design 10 | IPL final live streaming | Last ball, chaar run chahiye. Aur tumhari screen pe gol-gol ghoom raha hai. | 21 Mid-Sentence Start | 130s | 7:00 PM, comment NOTES | | | |
+| 2026-11-09 | +4 PM format test | Six repos -> six businesses (EN, 0/6 shelf, copy of @sofianedevs 49.7K) | Six free projects on GitHub you can turn into a real business. | Listicle + money promise | 82s | 4:00 PM, comment BUSINESS | | | |
 | 2026-11-07 | B interview 6 (remake) | Load balancer, full answer | Tatkal. Book dabaya, logout. Ticket gaya. Kyun? | 21 Mid-Sentence Start | 93s | scheduled 1:00 PM (slot test) | | | |
 | 2026-11-07 | C tool 3 | Floci NotesDrop project | Resume pe AWS, console kabhi khola nahi. Aaj raat ek project, free. | Callout + promise | 88s | scheduled 4:00 PM | | | |
 | 2026-11-07 | D github pick 2 | Filee (offline converter) | Free PDF site pe Aadhaar upload karna band karo. | Stop doing X (warning) | 41s | scheduled 7:00 PM (short test) | | | |
@@ -135,3 +141,42 @@ same early signature as Maps: re-read at 20h before calling it. Comments: 1 per 
 Pinned comment posted on Surge pricing (needs pinning in the app).
 **Changing from Nov 8:** the new 3-lane lineup (teardown / free tool / end-to-end system design) with comment-to-DM on
 every reel; experiments and targets as listed in the 2026-11-07 competitor read above.
+
+2026-11-07 night read (stats 23:15 IST, n = 9 on the grid, grid median 1,180 over 12): **Filee is the best reel the
+account has made.** 41 s free tool with a privacy stake ("Aadhaar upload karna band karo"): 1,404 views in 4 h, 28 saves
++ 14 shares from 1,182 reach (36/1k, best ever), **5 follows + 5 profile visits (4.2 follows/1k, 5x the average)**,
+0.7% follower views; YouTube 90 views, 60.9% stayed (best). Tools now hold the top 3 for saves and follows (Filee,
+Floci, DigUp). **Stalls:** LB Part 6 (93 s interview remake, 1 PM) 148 at 10 h, 12.2% follower views; Surge pricing
+199 at 14 h (6.6%); Maps traffic 245 at 44 h (11.6%). Three explainers in a row never left the follower pool; the
+earlier explainers (Swiggy, WhatsApp, TRAI) all did 1.16-1.29k. Floci NotesDrop (Free Tool Part 3) is no longer on the
+grid or in scheduled content (removed after the "broken sentences" verdict?). Comments: 0-1 per reel, none real.
+YouTube: Maps 145 (53%), WhatsApp 114 (27%), Filee 90 (61%), the rest 8-48.
+Housekeeping done: YouTube Nov 8 (PhotoCraft 13:00 and train 19:00 uploaded and scheduled; Raptor re-uploaded as the light
+"What's Inside?" render at 09:00, the old dark upload set to Private); pinned comments posted on LB Part 6 and Filee
+(pin them in the app).
+**Experiments for Nov 9 (judge at 20 h+):**
+1. Tool reel cut to Filee's shape: 35-45 s, privacy/money stake, one keyword. Proves it: saves+shares >= 25/1k and
+   follows >= 3/1k for a second tool in a row (PhotoCraft at 63 s on Nov 8 is the length control).
+2. System design hook opens on the viewer's own screen and stake in the first 2 s (not a fact about a company) to get it
+   out of the follower pool. Proves it: follower views < 5% and >= 1k at 20 h.
+3. Proposed 4th reel: a second free tool at 4 PM, since tools clearly convert. Proves it: two tools in one day both
+   >= 1k without cannibalising (each within 20% of the account median).
+
+2026-11-09 afternoon read (stats 16:10 IST, n = 9, grid median ~1,230 over 16; YouTube stats dropped from §0 by Sachin
+today): **Train call handover (System Design 9, 7 PM) is the best converter this round: 1,438 views at 21 h, 5 follows
++ 5 profile visits from 1,347 reach (3.7/1k), 1.2% follower views.** Experiment 2 from Nov 8 passed (viewer's screen in
+the first 2 s, < 5% follower views, > 1k). **net-merge (Tool, 1 PM): 7 views at 3 h, 86% follower views; never pushed to
+strangers; HowHub's version of the same tool did well; Sachin deleted ours.** Diagnosis in series/LESSONS.md 2026-11-09
+(hook in Mbps instead of the viewer's time, caveat before the CTA, small frame-0 text). Experiment 1 failed: two 1 PM
+tools in a row stalled (PhotoCraft 409 at 27 h, 0 follows), while Filee at 7 PM is still the account's best (2,570,
+34 saves+shares/1k, 3.2 follows/1k). Raptor (teardown 1): 1,222, 8.7 saves+shares/1k, 0 follows. Roadster (teardown 2):
+543 at 7 h, 0 saves, too young to judge. Comments: 0-3 per reel, none real. Pinned comments posted on Raptor,
+PhotoCraft, Train, Roadster (pin them in the app).
+**Experiments for Nov 10 (judge at 20 h+):**
+1. Tool reel with the HowHub fixes: hook in the viewer's time/quality ("khud ko WhatsApp karna band karo"), a big 2-4 word
+   headline on every scene, no caveat in the VO, CTA shows what lands in the DM. Proves it: >= 1k at 20 h with < 5%
+   follower views and saves+shares >= 25/1k.
+2. Slot swap: tool at 7 PM (Filee's slot), system design at 1 PM. Proves it: tool >= 1.5k; system design within 20% of
+   Train (>= 1.15k).
+3. Teardown hook tied to the viewer's own seat ("the engine 3 metres from your window"), not a company claim. Proves it:
+   follows >= 2/1k reach (both teardowns so far: 0).

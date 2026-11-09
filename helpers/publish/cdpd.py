@@ -76,6 +76,13 @@ async def handle(req):
                 await cdp.send("Input.dispatchKeyEvent", sid, type=t, key=a["key"], code=a.get("code", a["key"]),
                                windowsVirtualKeyCode=a.get("vk", 0), modifiers=a.get("mod", 0))
             return web.json_response("ok")
+        if cmd == "focus":  # 2026-11-10: keys stopped reaching a background tab; fake focus + bring to front
+            await cdp.send("Emulation.setFocusEmulationEnabled", sid, enabled=True)
+            try:
+                await cdp.send("Page.bringToFront", sid)
+            except Exception:
+                pass
+            return web.json_response("ok")
         if cmd == "click":
             for t in ("mousePressed", "mouseReleased"):
                 await cdp.send("Input.dispatchMouseEvent", sid, type=t, x=a["x"], y=a["y"], button="left", clickCount=1)

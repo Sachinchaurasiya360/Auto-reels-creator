@@ -26,6 +26,7 @@ export function SysNode({
   enterAt = 0,
   dark = false,
   highlight = false,
+  size = 1,
 }: {
   x: number;
   y: number;
@@ -37,6 +38,7 @@ export function SysNode({
   enterAt?: number;
   dark?: boolean;
   highlight?: boolean;
+  size?: number; // scale from the top-left corner; 1.3-1.4 reads on a phone when a scene has only 2-4 nodes (2026-11-10)
 }) {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
@@ -58,7 +60,8 @@ export function SysNode({
           ? `0 0 0 8px ${colors.blueSoft}, 0 30px 60px -28px rgba(12,10,9,0.35)`
           : "0 30px 60px -28px rgba(12,10,9,0.30)",
         opacity: enter,
-        transform: `translateY(${interpolate(enter, [0, 1], [30, 0])}px) scale(${interpolate(enter, [0, 1], [0.9, 1])})`,
+        transform: `translateY(${interpolate(enter, [0, 1], [30, 0])}px) scale(${size * interpolate(enter, [0, 1], [0.9, 1])})`,
+        transformOrigin: "0 0",
         fontFamily: fonts.body,
       }}
     >

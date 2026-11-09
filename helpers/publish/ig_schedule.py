@@ -81,8 +81,9 @@ cap = open(R + r"\caption.txt", encoding="utf-8").read().strip()
 ed = "document.querySelector('[role=dialog] [contenteditable=true]')"
 h.click_el(ed); h.ev(f"{ed}.focus()"); h.insert(cap); time.sleep(2)
 n = h.ev(f"{ed}.innerText.length")
-print("caption", n, "/", len(cap))
-if n != len(cap):
+u16 = len(cap.encode("utf-16-le")) // 2  # JS innerText.length counts an emoji as 2 (2026-11-08)
+print("caption", n, "/", u16)
+if n != u16:
     raise SystemExit("caption length mismatch")
 
 lab = h.by_text("Schedule content", scope=D, sel="span")
@@ -114,11 +115,25 @@ want = f"{hour:02d}:00 {ampm}"
 shown_time_js = "(()=>{const g=l=>document.querySelector('[role=dialog] input[aria-label=\"'+l+'\"]');const H=g('Hours'),M=g('Minutes'),A=g('AM PM');if(!H||!M||!A)return null;const h=H.getAttribute('aria-valuenow'),m=M.getAttribute('aria-valuenow'),a=A.getAttribute('aria-valuetext');if(!h||m===null||!a)return null;return String(h).padStart(2,'0')+':'+String(m).padStart(2,'0')+' '+a.toUpperCase()})()"
 # 2026-11-06: under --go the keys were lost on 3 of 4 reels and Instagram kept "now" (10:23 PM). Never click
 # Schedule without reading the time back from the dialog; retry, then stop.
+# 2026-11-08: typed digits stopped landing in the spinbuttons; ArrowUp/ArrowDown still work, so step each field
+# to its target by reading aria-valuenow (Hours 1-12, Minutes 0-59, AM PM 0=AM 1=PM).
+targets = (("Hours", hour), ("Minutes", 0), ("AM PM", 0 if ampm == "AM" else 1))
+# 2026-11-10: arrow keys did nothing while the tab was in the background (activeElement stayed null)
+h.focus(); time.sleep(0.5)
 for attempt in range(3):
-    for lab_, keys in (("Hours", f"{hour:02d}"), ("Minutes", "00"), ("AM PM", ampm[0])):
-        h.ev(f"document.querySelector('[role=dialog] input[aria-label=\"{lab_}\"]').scrollIntoView({{block:'center'}})")
-        h.ev(f"document.querySelector('[role=dialog] input[aria-label=\"{lab_}\"]').focus()")
-        time.sleep(0.4); h.key(keys); time.sleep(0.6)
+    for lab_, goal in targets:
+        q = f"document.querySelector('[role=dialog] input[aria-label=\"{lab_}\"]')"
+        h.ev(f"{q}.scrollIntoView({{block:'center'}})")
+        h.ev(f"{q}.focus()"); time.sleep(0.4)
+        for _ in range(70):
+            v = int(h.ev(f"{q}.getAttribute('aria-valuenow')") or -1)
+            if v == goal or v < 0:
+                break
+            if goal > v:
+                h.rawkey("ArrowUp", "ArrowUp", 38)
+            else:
+                h.rawkey("ArrowDown", "ArrowDown", 40)
+            time.sleep(0.12)
     h.ev("document.activeElement.blur()")
     time.sleep(0.8)
     got = h.ev(shown_time_js)

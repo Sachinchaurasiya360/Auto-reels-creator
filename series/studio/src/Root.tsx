@@ -14,8 +14,14 @@ import { LB6_FRAMES, LoadBalancerPart6 } from "./reels/LoadBalancerPart6";
 import { NOTES_FRAMES, FlociNotesDrop } from "./reels/FlociNotesDrop";
 import { FILEE_FRAMES, FileeGithubPick } from "./reels/FileeGithubPick";
 import { PC_FRAMES, PhotoCraftTool } from "./reels/PhotoCraftTool";
+import { SixReposBusiness, SRB_FRAMES } from "./reels/SixReposBusiness";
 import { TH_FRAMES, TrainHandover } from "./reels/TrainHandover";
 import { RAP_FRAMES, RaptorTeardown } from "./reels/RaptorTeardown";
+import { RDS_FRAMES, RoadsterTeardown } from "./reels/RoadsterTeardown";
+import { NM_FRAMES, NetMerge } from "./reels/NetMerge";
+import { LS_FRAMES, LocalSendTool } from "./reels/LocalSendTool";
+import { LSP_FRAMES, LiveScorePush } from "./reels/LiveScorePush";
+import { IPL_FRAMES, IplLiveStreaming } from "./reels/IplLiveStreaming";
 import { LB_FRAMES, LoadBalancerInterview } from "./reels/LoadBalancerInterview";
 import { SW_FRAMES, SwiggyLiveMap } from "./reels/SwiggyLiveMap";
 import { MQ_FRAMES, MessageQueueInterview } from "./reels/MessageQueueInterview";
@@ -48,9 +54,15 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="surge-pricing" component={SurgePricing} durationInFrames={SURGE_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="load-balancer-part6" component={LoadBalancerPart6} durationInFrames={LB6_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="floci-notesdrop" component={FlociNotesDrop} durationInFrames={NOTES_FRAMES} fps={30} width={1080} height={1920} />
+      <Composition id="roadster-thrusters" component={RoadsterTeardown} durationInFrames={RDS_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="raptor-engine" component={RaptorTeardown} durationInFrames={RAP_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="train-call-handover" component={TrainHandover} durationInFrames={TH_FRAMES} fps={30} width={1080} height={1920} />
+      <Composition id="ipl-live-streaming" component={IplLiveStreaming} durationInFrames={IPL_FRAMES} fps={30} width={1080} height={1920} />
+      <Composition id="net-merge" component={NetMerge} durationInFrames={NM_FRAMES} fps={30} width={1080} height={1920} />
+      <Composition id="localsend" component={LocalSendTool} durationInFrames={LS_FRAMES} fps={30} width={1080} height={1920} />
+      <Composition id="live-score-push" component={LiveScorePush} durationInFrames={LSP_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="photocraft" component={PhotoCraftTool} durationInFrames={PC_FRAMES} fps={30} width={1080} height={1920} />
+      <Composition id="six-repos-business" component={SixReposBusiness} durationInFrames={SRB_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="filee" component={FileeGithubPick} durationInFrames={FILEE_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="load-balancer" component={LoadBalancerInterview} durationInFrames={LB_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="floci-aws" component={FlociAws} durationInFrames={FLOCI_FRAMES} fps={30} width={1080} height={1920} />

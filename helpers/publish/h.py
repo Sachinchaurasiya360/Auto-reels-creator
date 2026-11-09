@@ -50,3 +50,8 @@ def shot(path):
 
 def goto(url, wait=6):
     return call(cmd="goto", tab=TAB, url=url, wait=wait)
+
+
+def focus():
+    """Make the tab behave as focused (keys land in spinbuttons) and bring it to the front."""
+    return call(cmd="focus", tab=TAB)

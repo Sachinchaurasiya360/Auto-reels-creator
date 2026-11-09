@@ -5,23 +5,26 @@ Run `topics.py check` on a topic before researching it. Reorder by what performs
 
 ## Slot A: Claude se Reels (15 parts, from 2026-11-10)
 
-What's Inside? stopped 2026-11-09. Each part ends naming the next one.
+What's Inside? stopped 2026-11-09. **Each part = one free GitHub repo / Claude skill that makes a different kind of reel,
+and that part's reel is itself built with that repo** (show, don't tell). Sachin 2026-11-09: "we will try different types
+of techniques ... hyperframes, remotion, anatomy reels, paper graph ... different types of GitHub repo". Stars from the
+GitHub API, 2026-11-09. Each part ends naming the next one; comment CLAUDE -> repo link + setup.
 
-1. Ye reel Claude ne banayi: the whole pipeline (topic -> research -> hook -> script -> voice -> code animation -> schedule -> stats)
-2. Scroll rokne wala hook Claude se kaise likhwaayein (hook formulas, scoring, free claude.ai)
-3. Script jo log end tak dekhein (retention structure, re-hooks, loop ending)
-4. Free AI voice vs paid (Indian voices: Sarvam, Kokoro, Edge TTS vs ElevenLabs)
-5. Remotion: React code se animated video (free, open source)
-6. HyperFrames: HTML se video
-7. Captions free mein: local Whisper + word-by-word animated captions
-8. AI images for B-roll: free vs paid
-9. AI video generation (Veo, Kling, Sora): kab paisa lagana worth hai
-10. Faceless explainer reel end to end
-11. Talking-head reel: Claude se filler aur pauses kaatna
-12. Skills: Claude ko apna reel style yaad karwana
-13. Sound design + SFX free
-14. Auto-schedule Instagram + YouTube with Claude
-15. Stats loop: Claude tumhari insights padh ke agla plan banata hai (+ full cost: ₹0 setup vs paid setup)
+1. HyperFrames (heygen-com/hyperframes, 81k, Apache-2.0): write HTML, render video, skills for Claude Code
+2. Remotion (remotion-dev/remotion 72k + remotion-dev/skills): video as React code
+3. Anatomy skill: isometric technical figures that take themselves apart (our teardown look)
+4. Lemo-Opuscar (lemomo-ai/lemo-opuscar, 14k, MIT): 66 film styles in code; Paper Pop-up Book / Paper-cut
+5. Opuscar Blueprint: graph-paper inventor drawing style
+6. Manim (3b1b/manim 96k, ManimCommunity/manim 42k): 3Blue1Brown-style math explainers
+7. Motion Canvas (motion-canvas/motion-canvas, 20k): code animation with a live editor
+8. GSAP (greensock/GSAP, 30k) + its skills: kinetic typography
+9. Three.js (mrdoob/three.js, 118k) / React Three Fiber: 3D reels
+10. Excalidraw (excalidraw/excalidraw, 135k): hand-drawn whiteboard reels
+11. Lottie (airbnb/lottie-web, 32k): After Effects animations as code
+12. ChatCut agent-plugin (ChatCut-Inc/agent-plugin, 1k): edit a talking-head video by chatting
+13. Kokoro (hexgrad/kokoro, 10k): free voiceover, offline
+14. faster-whisper (SYSTRAN/faster-whisper, 27k): word-by-word animated captions, offline
+15. The full stack in one reel: which repo for which kind of reel, free vs paid
 
 ## Slot A: Real Life System Design
 

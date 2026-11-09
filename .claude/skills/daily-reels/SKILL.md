@@ -1,6 +1,6 @@
 ---
 name: daily-reels
-description: Make today's 3 InternHack reels end to end (Andar Kya Hai? English machine teardown, free tool / GitHub repo with comment-to-DM, end-to-end system design; plus Tech News Decoded on big-news days): pull the previous reels' stats from Instagram and YouTube, pick non-repeating topics, research, Hinglish scripts, one approval gate, Sarvam voice, Remotion build on the GPU, render, post copy, log, then schedule all 3 on Instagram and YouTube. Use when the user types /daily-reels or asks for "today's reels".
+description: Make today's 3 InternHack reels end to end (Andar Kya Hai? English machine teardown, free tool / GitHub repo with comment-to-DM, end-to-end system design; plus Tech News Decoded on big-news days): pull the previous reels' stats from Instagram (no YouTube stats), pick non-repeating topics, research, Hinglish scripts, one approval gate, Sarvam voice, Remotion build on the GPU, render, post copy, log, then schedule all 3 on Instagram and YouTube. Use when the user types /daily-reels or asks for "today's reels".
 ---
 
 # Daily reels
@@ -26,8 +26,8 @@ rework the weakest, give the strongest a second slot.
 | B · 7 PM | **System design, end-to-end** (Real Life SD and Mock Interview alternate days) | ≤150s (110-140s) | Hinglish | series/studio (Remotion); Opuscar Blueprint look is an experiment |
 | +1 news days | **Tech News Decoded** (Starship, chips, AI launches) | 45-70s | Hinglish | Opuscar Visual Investigation / Satellite Briefing or studio |
 
-- Every reel ends on a **comment keyword** that Sachin's auto-DM answers: teardowns "Comment ENGINE / <WORD> for the
-  blueprint PDF" (print it with anatomy's `scripts/print.mjs`), tools "Comment <WORD>, link DM mein", system design
+- Every reel ends on a **comment keyword** that Sachin's auto-DM answers: teardowns "Comment <WORD>, notes DM mein / I'll DM
+  you the notes" (no blueprint PDF from Ep 3, LESSONS 2026-11-08), tools "Comment <WORD>, link DM mein", system design
   "Comment NOTES". Put keyword + what to DM at the top of `post.md` so Sachin can load it.
 - Every reel gets the **SFX pass**: a sound on each visual event (clank on part separation, hiss, rumble + boom on
   ignition, tick on counters, paper on cheat sheets/PDF, typing on terminals), from `series/studio/public/sfx`,
@@ -62,23 +62,22 @@ rework the weakest, give the strongest a second slot.
 
 **Scope (Sachin, 2026-11-02): only the 9 most recent reels** (the last 3 posting days), not the whole history.
 Older reels keep the numbers already logged. The grid view counts for every reel come free with one page load, so
-use them for the account median; open insights and YouTube analytics only for those 9.
+use them for the account median; open insights only for those 9.
+
+**No YouTube Studio stats (Sachin, 2026-11-09):** don't open Studio analytics in §0; Instagram only. YouTube is still
+used for scheduling in §7.
 
 Use the user's already-open Chrome through the browser-use plugin (`browser_exec`). Reuse the existing
-Instagram and YouTube Studio tabs and never touch other tabs (Medium etc.). Recipes are in `publish.md`.
+Instagram tab and never touch other tabs (Medium etc.). Recipes are in `publish.md`.
 
 - **Instagram** (@intern.hack): the reels grid view count for every reel, plus likes, comments
   (excluding the account's own) and posted time from each reel page. Try the reel's Insights for
   reach, average watch time and skip rate; if web insights aren't there, say so and use what loads.
-- **YouTube Studio** (channel `UCsBOnrfOFU-v_wPRu_VH7EA`, Shorts tab): views, likes, comments, and
-  from each Short's analytics the average view duration / % viewed and "viewed vs swiped away".
 - **Write them down:** add `views`, `likes`, `comments` and `watch_pct` (whatever exists) per platform to each
-  reel's record in `series/log/topics.jsonl` (keys `ig_*`, `yt_*`, plus `stats_at`), then
+  reel's record in `series/log/topics.jsonl` (keys `ig_*` plus `stats_at`), then
   `python helpers/topics.py log`. Update the same numbers in `.claude/instagram/log.md` (and re-sync it).
 - **Goal metrics: views AND follows** (LESSONS 2026-11-02 goal). Per reel: follows and profile visits per
   1,000 reach, saves + shares per reach. A reel that reaches but doesn't convert gets one written "why".
-- **Instagram vs YouTube:** open each of the 9 recent Shorts' analytics (viewed vs swiped away, average view
-  duration) and write why the same reel did differently on each platform.
 - **Read them** the `/ig-audit` way: outlier multiple and hook formula per reel, top vs bottom, what beat its
   neighbours and the likely reason (hook, topic, length, the variable logged that day). Then `/ig-reply` drafts
   for real comments worth answering.
@@ -105,6 +104,16 @@ One agent per reel writes `reels/<date>-<slug>/research.md`. Primary sources fir
 web search (`site:reddit.com/...`, `site:x.com ...`); HN and GitHub via `helpers/research.py`. Every
 number gets a source URL; mark anything unverified. Each reel must be complete on its own.
 
+**Keep the briefs lean (2026-11-08, research was ~25% of a run's tokens):**
+- Point the agent at ONE previous research.md of the same slot as the format, not at LESSONS.md (the script step
+  applies LESSONS; research only needs facts). Paste the 3-5 lesson lines that change what to look for (e.g. "≤6
+  terms", "hook needs the viewer's stake") into the brief instead.
+- Ask for at most ~15 sources and ~25 tool calls; stop when every claim the script will need has a URL.
+- Ask for a 10-line summary back; the file holds the rest.
+- Tool slot: check `.claude/instagram/swipe.md` and the backlog first; only search GitHub trending if neither has a
+  fresh pick.
+- Teardown slot: research.md + FACTS.md (claim | number | URL | status) only; the figure is a separate step.
+
 ## 3. Scripts
 
 - **Teardown (slot A) scripts are English**: plain `script.txt` (Sarvam English voice or Kokoro via Opuscar
@@ -129,6 +138,13 @@ number gets a source URL; mark anything unverified. Each reel must be complete o
   to the first. Score 3 hooks with `.claude/skills/ig-reel/hookscore.py` (top must be 50+) and run
   `beats.py --target <s>` until clean. The scorer only knows English stake words and `$`; also score an
   English gloss and show both. Pace and format are free to change (voice is locked): vary one per day and log it.
+- **Spoken flow check (LESSONS 2026-11-07 late night, Floci Part 3 failed it).** Before the gate, read every VO line
+  aloud: (1) a full sentence a person would say, no missing subject/verb ("Resume mein AWS likha hai, par AWS kabhi
+  khola bhi nahi?", never "Resume pe AWS, console kabhi khola nahi"); (2) each line linked to the last (toh / kyunki /
+  par / ab / phir), no fragments like "Step do. Bucket: s3 mb."; (3) tool/project reels say what the app does, for
+  whom, and what it's like ("Google Drive ke share link jaisa") before any service name; (4) commands, flags, ports and
+  function names are on screen only, never spoken; (5) ≤6 spoken terms, each after its plain-words meaning. At the
+  gate, list the spoken terms and confirm all five.
 - Mock interview: interviewer **Arjun**, candidate **Priya** (LESSONS 2026-11-02).
 - **Mock interview is technical first (LESSONS 2026-11-06, Part 6 was deleted for this).** The analogy and object
   rules above do NOT apply to slot B. Priya answers like a real candidate: real components, flow in order, one real
@@ -149,12 +165,17 @@ Wait for OK or edits. If the user said "no stops", skip the wait and list every 
 
 ```bash
 python helpers/voice_cast.py reels/<dir>/script_tts.txt -o reels/<dir>/voiceover.wav
-PYTHONUTF8=1 python helpers/transcribe_local.py reels/<dir>/voiceover.wav --edit-dir reels/<dir>/edit --lines reels/<dir>/vo_lines
-#   local only: no ElevenLabs / Scribe in this pipeline (Sachin, 2026-11-02)
 mkdir -p series/studio/public/reels/<slug> && cp reels/<dir>/voiceover.wav series/studio/public/reels/<slug>/vo.wav
-PYTHONUTF8=1 python helpers/captions_roman.py reels/<dir>/script.txt reels/<dir>/script_tts.txt \
-  reels/<dir>/edit/transcripts/voiceover.json -o series/studio/public/reels/<slug>/captions.json --lines reels/<dir>/vo_lines/lines.json
+PYTHONUTF8=1 python helpers/captions_roman.py reels/<dir>/script.txt reels/<dir>/script_tts.txt --fast \
+  -o series/studio/public/reels/<slug>/captions.json --lines reels/<dir>/vo_lines/lines.json
 ```
+
+`--fast` (2026-11-08) times every word from voice_cast's per-line wavs in about a second (median ~130 ms off the ASR
+timings). The old CPU transcription took ~16 min and blocked the run. Use the ASR path (`transcribe_local.py`, then
+`captions_roman.py ... edit/transcripts/voiceover.json`, then `helpers/fix_caption_lines.py`) only for the number
+listen-check (LESSONS 2026-11-02 rule 3) or after a line was edited in an audio tool, and run it in the background.
+Local only: no ElevenLabs / Scribe (Sachin, 2026-11-02). An English teardown voice file that spells a unit as several
+words ("P S I") must hyphenate it ("P-S-I") so the word counts pair.
 
 - **Reuse first** (LESSONS 2026-11-02): before writing a beat, find the component in `series/library/CATALOG.md` (start with `Kit`, `Transitions`, `Infra`) /
   `src/series/*` / Remocn / snapcn / onda. Close but not right: improve that component. Nothing fits: build it in
@@ -171,12 +192,23 @@ PYTHONUTF8=1 python helpers/captions_roman.py reels/<dir>/script.txt reels/<dir>
   Gotchas (2026-11-07): anatomy pages start their own idle tour **at load**, so the first cue must be
   `{"t":0.05,"key":"Escape"}` (otherwise parts light up during the hook and the first Space closes instead of opens).
   Render light theme with a reel CSS (`--css`, e.g. reels/2026-11-08-raptor-engine/reel-light.css: unfocused parts
-  opacity 0.16, the named part orange) so the part reads on a phone. Split long renders into 3 parallel `--from/--to`
-  chunks (each replays state from 0 without screenshots) and concatenate. Delete the old out/*.mp4 before re-rendering.
+  opacity 0.16, the named part orange) so the part reads on a phone. Always pass `--chunks 6` (built in: parallel browsers,
+  frames numbered globally; benchmark 2026-11-07: 300 frames 107 s -> 39 s; the cost is the screenshot readback, so
+  resolution/raw CDP capture don't help). Delete the old out/*.mp4 before re-rendering.
+  **Reuse figures (2026-11-08):** every figure lives in `series/anatomy/<machine>/` (build.mjs, css, html, cues,
+  blueprint PDF) and shares `series/anatomy/kit/` (car chassis, wheels/tyres, tanks, nozzles, pumps, pipes, card
+  chrome). A new episode adapts the closest existing figure and adds parts to the kit; a figure is only built from
+  scratch when nothing in the kit is close. The kit is what makes the teardown slot fast.
 - `npx tsc --noEmit`, then `npx remotion render <id> out/<slug>.mp4 --codec=h264 --crf=18 --gl=angle --concurrency=10`.
   Always render on the GPU (Sachin, 2026-11-02); `remotion.config.ts` sets the same defaults. About 3-4.5 min per reel.
-- Frame-check every beat from the rendered file (contact sheets); fix overlaps, empty or tiny beats,
-  anything that breaks LESSONS.md; re-render.
+- Frame-check every beat from the rendered file with ONE small sheet per reel:
+  `python helpers/contact_sheet.py series/studio/out/<slug>.mp4 --every 4` (200 px tiles, stamped with the second).
+  Render a full-size still only for a tile that looks wrong, with `node stills.mjs <id> out/sf/<slug> <sec> ...` in
+  series/studio (one bundle + one browser for all stills: ~2 s each; `npx remotion still` re-bundles every call: ~15 s each). Fix overlaps,
+  empty or tiny beats, anything that breaks LESSONS.md, content below y 1330; re-render. Before the full render,
+  check 8-12 stills (one `node stills.mjs` call) tiled with `contact_sheet.py --stills`, not one image each.
+  Fonts: every `loadFont()` must pass `weights` + `subsets: ["latin"]`; a bare `loadFont()` pulls every weight on
+  every render tab (2026-11-08: ~300 font requests per tab before this was fixed).
 - `python helpers/finish_reel.py series/studio/out/<slug>.mp4 reels/<dir> --cover-at <s>` (−14 LUFS,
   black-frame scan, cover).
 

@@ -73,7 +73,7 @@ Instagram at guessed coordinates outside a dialog (a stray click opened a random
 - Instagram web has **no Pin**: a comment's "Comment Options" (hover its Reply line) only offers Delete. Post
   the comment from the browser and pin it in the phone app.
 
-**YouTube Studio**
+**YouTube Studio** (not used since 2026-11-09: no YouTube stats in §0; kept for reference)
 - `https://studio.youtube.com/channel/UCsBOnrfOFU-v_wPRu_VH7EA/videos/short`: rows are `ytcp-video-row`;
   `innerText` holds the title, visibility, date, views, comments and likes.
 - Per Short: `https://studio.youtube.com/video/<id>/analytics/tab-overview/period-default` for the

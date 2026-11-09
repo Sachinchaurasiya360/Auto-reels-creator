@@ -153,7 +153,7 @@ load bar to HANG), and "Next: Part 2/30" + a reason to follow. No competitor lis
    interview as a story against Arjun + Priya; log which one ran.
 5. **Measure follows.** §0 reads follows and profile visits per 1,000 reach, and saves + shares per reach,
    next to views; a reel that reaches but doesn't convert gets a written "why" (no follow reason? no series?).
-6. **Instagram vs YouTube side by side.** Open each recent Short's YouTube analytics (viewed vs swiped away,
+6. ~~**Instagram vs YouTube side by side.**~~ Dropped 2026-11-09 (Sachin: no YouTube Studio stats). Open each recent Short's YouTube analytics (viewed vs swiped away,
    average view duration) and write why the same reel did differently on each platform.
 7. **Trends weekly, without a competitor list.** Run `/ig-viral` on the niche itself (Instagram search /
    hashtags in the logged-in Chrome: system design Hindi, placement prep, tech news India), keep

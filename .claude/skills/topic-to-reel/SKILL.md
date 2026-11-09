@@ -66,6 +66,7 @@ Broad topic or unclear angle: run `/ig-viral` on the niche, then pick a format (
 
 - 8-10 hooks across formulas in `.claude/skills/ig-reel/hooks.json`; score with `python .claude/skills/ig-reel/hookscore.py <dir>/hooks.txt`. The scorer only reads Latin script: for Hindi, score an English gloss of each hook or judge by hand and say so.
 - Pick the top one that is true and that the video pays off.
+- Hook speaks in the viewer's time, money or own stuff, never a raw unit ("2 ghante ki movie, 15 minute mein", not "121 vs 303 Mbps"), and kills the obvious objection in the same line ("bina upgrade", "₹0"). Frame 0 shows that pain as a big headline over the real object (series/LESSONS.md 2026-11-09).
 - Three layers land together in the first 1.5s: **spoken** (under 3s, concrete noun or number up front), **on-screen** (3-6 words that complement, not transcribe, the spoken line), **visual** (the subject already moving on frame 0; no fade-in, no logo, no title card).
 
 ### 4. Script (writes `script.txt`), then gate 1
@@ -78,6 +79,8 @@ Broad topic or unclear angle: run `/ig-viral` on the niche, then pick a format (
 | last 3-6s | close | Land the open loop, one CTA that earns a share/save/comment, ideally a last line that flows back into the hook (loop). |
 
 - Write how people talk. No "Step one / Step two" in the voice; that structure belongs on screen, never in the mouth. Read every line aloud in your head: if no creator would say it, rewrite it.
+- Every line is a complete spoken sentence (no clipped headline phrasing) and links to the line before it (so / because / but / now). Explain what a product does and what it is like before naming its parts. Commands, flags and ports go on screen, never in the voice. Max 6 spoken terms, each after its plain meaning.
+- Limits and caveats go in the caption and pinned comment, never as the last VO beat before the CTA; the VO picks use cases where the claim is true. Compare to things the viewer already knows or to ₹0, not to foreign paid products. Every scene has a 2-4 word chapter headline that tells the story with sound off; the CTA shows what lands in the DM.
 - One idea per line, short sentences. Blank line = longer pause. Numbers written as spoken.
 - `python .claude/skills/ig-reel/beats.py <script> --target <secs>` and `python .claude/skills/ig-human/humanize.py <script> --report` (both Latin-only; for Hindi count words yourself at ~165 wpm). No em dashes, no AI slop words.
 

@@ -379,3 +379,52 @@ Compared against the junior's transcripts (client-server Part 2, DNS outage, bro
 4. **Max ~6 new terms per reel**, each said in plain words first.
 5. **Teardown series is "What's Inside?"** (English name) and renders the light theme (anatomy `-light.html`) so the
    lit part reads clearly; dark only if the light frame check fails.
+
+## 2026-11-07 (late night) · Floci Part 3: broken sentences, unexplained app, word salad
+
+Sachin on the NotesDrop reel: "'Resume pe AWS console kabhi khola nahi' does this line make sense? ... it should be
+resume me AWS hai but kabhi AWS khola nahi", "I even doesn't understand the notes service what does it do", "you are
+mixing the word", "your words are not maintaining the flow".
+
+1. **Every line is a full spoken sentence.** No clipped headline Hindi ("Resume pe AWS, console kabhi khola nahi"). Read
+   it aloud: if a listener has to fill in a missing verb or subject, rewrite it.
+2. **Explain the product before its insides.** For any tool/project reel: what it does, for whom, compared to something
+   they already use ("Google Drive ke share link jaisa"), before any service name.
+3. **Commands are on screen, never spoken.** `s3 mb`, `put_item`, port numbers, flags go in the code card; the VO says
+   what the step does in plain words.
+4. **Connect every line to the one before** (toh / kyunki / par / ab / phir). Telegraphic fragments ("Step do. Bucket:
+   s3 mb.") are banned.
+5. Tool reels follow the same spine as system design: problem -> what the app does -> one analogy story -> explicit
+   mapping -> steps in the mapped words -> one mistake -> interview line -> next part. ≤6 spoken terms.
+
+## 2026-11-08 · No blueprint PDF for teardowns
+
+Sachin: "no need to give the blue print pdf remove it" (Ep 2 Roadster already rendered with the PDF line, kept as is:
+"no change for today one"). From What's Inside? Ep 3: the comment keyword sends the notes link
+(internhack.xyz/notes/<slug>), the VO says "Comment <WORD>, I'll DM you the notes", and no `print.mjs` step.
+Also from this run: the reels took ~81% of Sachin's Claude usage and 2h+; keep runs lean (daily-reels SKILL: fast
+captions, one contact sheet per reel, lean research briefs, reuse figures from series/anatomy/).
+
+## 2026-11-09 · net-merge (GitHub Pick 4) lost to HowHub's copy of the same tool
+
+Same tool, same 45 s, same "comment SPEED" CTA. HowHub's reel (`Downloads/Video-48757.mp4`) did far better. Diagnosis
+from both transcripts and frame sheets:
+
+1. **Hook in the viewer's time and pain, never in a unit.** Ours: "Wi-Fi akela 121 Mbps, saath mein 303" (spec sheet,
+   Mbps means nothing to most). Theirs: "Jo movie 2 ghante mein download hoti hai, woh 15 minute mein. Bina Wi-Fi
+   upgrade kiye." Convert every number to minutes, rupees or a thing they own before it goes in the first line, and
+   kill the obvious objection in the same breath ("bina upgrade", "₹0").
+2. **Frame 0 shows the pain big.** Theirs: "2 HOURS WASTED" headline over stuck download cards. Ours: a small caption
+   and one thin bar on an empty white screen. The first frame must read with the sound off from across a room.
+3. **One big chapter headline per scene** (60-90px, 2-4 words: "DUAL NETWORK MERGE", "2X TO 3X FASTER"). A sound-off
+   scroller gets the whole story from headlines alone. No frame with an empty bottom half.
+4. **Never undercut the payoff in the voiceover.** Our "Seedhi baat: ek akeli file tez nahi hoti, data kharch hota
+   hai" sat right before the CTA. Limits stay honest but go in the caption and pinned comment; the VO instead picks
+   use cases where the claim is true (game updates, many downloads at once). Don't copy false claims either: theirs
+   ("one movie in 15 min") overstates what net-merge does.
+5. **Compare to things the viewer knows or to ₹0.** "Speedify $90/saal" cost 5 s on a product nobody here has heard of.
+6. **Straight line:** pain -> name -> what it does -> how (one beat) -> result shown big -> CTA. No mechanism before
+   the name, no detours.
+7. **Broad stake beats narrow:** "ghar ka Wi-Fi" over "hostel Wi-Fi" unless the reel is truly hostel-only.
+8. **The CTA shows what they get:** cards for what lands in the DM (repo, setup guide, tips) plus one follow line.
+9. Voice runs on: fewer, longer linked sentences beat eight clipped ones.

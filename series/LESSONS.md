@@ -428,3 +428,12 @@ from both transcripts and frame sheets:
 7. **Broad stake beats narrow:** "ghar ka Wi-Fi" over "hostel Wi-Fi" unless the reel is truly hostel-only.
 8. **The CTA shows what they get:** cards for what lands in the DM (repo, setup guide, tips) plus one follow line.
 9. Voice runs on: fewer, longer linked sentences beat eight clipped ones.
+
+## 2026-11-09 (evening) · What's Inside? stopped; new series Claude se Reels
+
+Sachin: "only today what's inside let's discontinue it" (Roadster Ep 2 was the last; the jet engine Ep 3 promised at its
+end is dropped). Stats agree: two teardowns, 0 follows, Roadster 0 saves at 7 h. Sachin: "one more reels about how they
+can create reels using claude start this series 15 episode ... free paid and a lot of things ... if you are confirm about
+30% go if doubt ask me". Slot A is now **Claude se Reels** (Hinglish, 50-75 s, Part N of 15, comment CLAUDE -> setup
+guide). Plan in `series/backlog.md`. Show our real pipeline; say "free" or "paid" only when sure, otherwise keep prices
+off the VO.

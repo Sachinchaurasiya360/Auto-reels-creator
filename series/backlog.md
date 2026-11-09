@@ -3,6 +3,26 @@
 Ideas not made yet. `python helpers/topics.py backlog` marks the ones already in the log.
 Run `topics.py check` on a topic before researching it. Reorder by what performs (see `log/LOG.md`).
 
+## Slot A: Claude se Reels (15 parts, from 2026-11-10)
+
+What's Inside? stopped 2026-11-09. Each part ends naming the next one.
+
+1. Ye reel Claude ne banayi: the whole pipeline (topic -> research -> hook -> script -> voice -> code animation -> schedule -> stats)
+2. Scroll rokne wala hook Claude se kaise likhwaayein (hook formulas, scoring, free claude.ai)
+3. Script jo log end tak dekhein (retention structure, re-hooks, loop ending)
+4. Free AI voice vs paid (Indian voices: Sarvam, Kokoro, Edge TTS vs ElevenLabs)
+5. Remotion: React code se animated video (free, open source)
+6. HyperFrames: HTML se video
+7. Captions free mein: local Whisper + word-by-word animated captions
+8. AI images for B-roll: free vs paid
+9. AI video generation (Veo, Kling, Sora): kab paisa lagana worth hai
+10. Faceless explainer reel end to end
+11. Talking-head reel: Claude se filler aur pauses kaatna
+12. Skills: Claude ko apna reel style yaad karwana
+13. Sound design + SFX free
+14. Auto-schedule Instagram + YouTube with Claude
+15. Stats loop: Claude tumhari insights padh ke agla plan banata hai (+ full cost: ₹0 setup vs paid setup)
+
 ## Slot A: Real Life System Design
 
 0. **NEXT (promised in Part 7, Google Maps traffic): Part 8: Ola, Uber ka surge price kaun decide karta hai** (backlog 3, concert-end cab surge)

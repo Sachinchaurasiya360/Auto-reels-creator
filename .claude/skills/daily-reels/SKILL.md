@@ -21,7 +21,7 @@ rework the weakest, give the strongest a second slot.
 
 | slot | series | length | language | build |
 |---|---|---|---|---|
-| A · 9 AM | **What's Inside?** machine teardown (light theme) (rocket engine, flying car, jet engine, F1 brake, PSLV stage...) | ≤150s (~90-120s) | **English** | `anatomy` figure (or Opuscar 3D: Hologram HUD / Exploded Teardown) → `helpers/anatomy_render.mjs` frames → Remotion/ffmpeg + VO + SFX |
+| A · 9 AM | **Claude se Reels** (15 parts, from 2026-11-10): how to make reels with Claude, free + paid tools, every kind of reel. Plan in `series/backlog.md`. **What's Inside? stopped 2026-11-09** (Sachin; Roadster Ep 2 was the last) | 50-75s | Hinglish | series/studio (Remotion); show the real pipeline (terminal, script, render) |
 | C · 1 PM | **Free tool / GitHub repo** | 35-50s | Hinglish | series/studio (Remotion) |
 | B · 7 PM | **System design, end-to-end** (Real Life SD and Mock Interview alternate days) | ≤150s (110-140s) | Hinglish | series/studio (Remotion); Opuscar Blueprint look is an experiment |
 | +1 news days | **Tech News Decoded** (Starship, chips, AI launches) | 45-70s | Hinglish | Opuscar Visual Investigation / Satellite Briefing or studio |

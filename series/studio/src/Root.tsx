@@ -21,6 +21,7 @@ import { RDS_FRAMES, RoadsterTeardown } from "./reels/RoadsterTeardown";
 import { NM_FRAMES, NetMerge } from "./reels/NetMerge";
 import { LS_FRAMES, LocalSendTool } from "./reels/LocalSendTool";
 import { LSP_FRAMES, LiveScorePush } from "./reels/LiveScorePush";
+import { CSR1_FRAMES, ClaudeSeReels1 } from "./reels/ClaudeSeReels1";
 import { IPL_FRAMES, IplLiveStreaming } from "./reels/IplLiveStreaming";
 import { LB_FRAMES, LoadBalancerInterview } from "./reels/LoadBalancerInterview";
 import { SW_FRAMES, SwiggyLiveMap } from "./reels/SwiggyLiveMap";
@@ -61,6 +62,7 @@ export const RemotionRoot: React.FC = () => {
       <Composition id="net-merge" component={NetMerge} durationInFrames={NM_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="localsend" component={LocalSendTool} durationInFrames={LS_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="live-score-push" component={LiveScorePush} durationInFrames={LSP_FRAMES} fps={30} width={1080} height={1920} />
+      <Composition id="claude-se-reels-1" component={ClaudeSeReels1} durationInFrames={CSR1_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="photocraft" component={PhotoCraftTool} durationInFrames={PC_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="six-repos-business" component={SixReposBusiness} durationInFrames={SRB_FRAMES} fps={30} width={1080} height={1920} />
       <Composition id="filee" component={FileeGithubPick} durationInFrames={FILEE_FRAMES} fps={30} width={1080} height={1920} />

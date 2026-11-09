@@ -10,6 +10,13 @@ and that part's reel is itself built with that repo** (show, don't tell). Sachin
 of techniques ... hyperframes, remotion, anatomy reels, paper graph ... different types of GitHub repo". Stars from the
 GitHub API, 2026-11-09. Each part ends naming the next one; comment CLAUDE -> repo link + setup.
 
+**Format (template = @automationmentor security-audit reel, LESSONS 2026-11-09 night):** "Socho agar ..." hook with the
+viewer's stake -> "Day N: Claude se Reels" streak line (`StreakStrip`) -> repo name + how to use in one line (install
+command typed in a `Terminal`, never read out) -> what Claude does, steps on a `StepTracker` with "yaani" glosses ->
+"Aur ab aati hai sabse smart baat" re-hook + visual switch -> the result (the reel itself was made this way) -> one tip
+-> "Follow karo aur comment karo CLAUDE" acted out on a profile card. Research each part's repo/skill fresh at
+research time (Sachin: "search for the repo and skills at the research time"); the list below is only a starting point.
+
 1. HyperFrames (heygen-com/hyperframes, 81k, Apache-2.0): write HTML, render video, skills for Claude Code
 2. Remotion (remotion-dev/remotion 72k + remotion-dev/skills): video as React code
 3. Anatomy skill: isometric technical figures that take themselves apart (our teardown look)

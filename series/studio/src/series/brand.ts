@@ -75,7 +75,7 @@ const shadcnTokens = {
 export const remocnTheme: RemocnTheme = shadcnTokens;
 export const snapTheme: SnapCnTheme = { ...shadcnTokens, fontFamily: fonts.body };
 
-export type SeriesKind = "system-design" | "mock-interview" | "tech-news" | "github-pick" | "ai-tool" | "myth" | "andar-kya-hai";
+export type SeriesKind = "system-design" | "mock-interview" | "tech-news" | "github-pick" | "ai-tool" | "myth" | "andar-kya-hai" | "claude-se-reels";
 
 export const seriesLabel: Record<SeriesKind, string> = {
   "system-design": "Real Life System Design",
@@ -85,4 +85,5 @@ export const seriesLabel: Record<SeriesKind, string> = {
   "ai-tool": "Tool of the Day",
   myth: "Galat Samajh Rahe Ho",
   "andar-kya-hai": "What's Inside?",
+  "claude-se-reels": "Claude se Reels",
 };

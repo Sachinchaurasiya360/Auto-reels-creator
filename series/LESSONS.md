@@ -437,3 +437,30 @@ can create reels using claude start this series 15 episode ... free paid and a l
 30% go if doubt ask me". Slot A is now **Claude se Reels** (Hinglish, 50-75 s, Part N of 15, comment CLAUDE -> setup
 guide). Plan in `series/backlog.md`. Show our real pipeline; say "free" or "paid" only when sure, otherwise keep prices
 off the VO.
+
+## 2026-11-09 (night) · Reference: @automationmentor "Day 5: Cloudflare security-audit skill" (Video-38223.mp4)
+
+Sachin shared it as a well-narrated reel ("look how well it is narrated"); contact sheet `series/references/security-audit-skill-1.png`.
+69 s, ~185 wpm, one narrator, Hinglish. It is the template for **Claude se Reels** (a Claude skill shown working).
+
+Narration spine: imagine-hook with the viewer's stake ("Socho agar AI agents ki poori team sirf aapke security holes
+dhoondhne mein lag jaaye. Aur wo bhi ek GitHub repo se.") -> series line ("Day 5: repos jo aapko pata hone chahiye")
+-> name + how to use it in one sentence, command shown typed, never read as jargon -> steps signposted ("Sabse pehle ...
+yaani ... Phir ...") with 3 concrete examples, each on screen at its word -> **spoken midpoint re-hook "Aur ab aati hai
+sabse smart baat"** -> the clever mechanism as cause -> effect -> authority proof (Cloudflare's own system) -> one
+practical tip -> "Follow karo aur comment karo SECURE, repo DMs mein".
+
+Rules from it (all slots; Claude se Reels and GitHub Pick first):
+1. **"yaani ..." right after every term**: the plain-words gloss in the same breath.
+2. **Spoken midpoint re-hook** ("Aur ab aati hai sabse smart baat / asli twist") and a visual switch on that line
+   (theme flip, colour wipe or camera move), so the eye gets the re-hook too.
+3. **A step tracker stays on screen** through the mechanism (`StepTracker`): the phases tick done one by one, so the
+   viewer always knows where they are. It is the accumulating legend of 2026-11-02, drawn as product UI.
+4. **Realistic product UI over abstract boxes**: terminal with the real install command, the app's own panels,
+   finding cards with badges.
+5. **Streak counter as the follow reason** (`StreakStrip`, "Day N", chips 1..N with today highlighted) for daily
+   series (GitHub Pick, Claude se Reels), instead of a small "Part N" chip only.
+6. **Staged CTA**: follow + keyword in one line, and the ending acts it out (profile card, Follow -> Following, the
+   keyword typed as a comment, our reply "Sent, check your DMs").
+7. Avoid its faults: tiny dim panel text (keep UI text >= 28 px), empty glow-only frames, a frame-0 card that is too
+   small (our `Headline` already fixes frame 0).

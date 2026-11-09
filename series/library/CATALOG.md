@@ -74,6 +74,7 @@ belongs in the library.
 | `Keyword` (2026-11-09) | `KeywordCard` the comment-keyword ending (dark card, word in lime, reply box typing it, what lands in the DM); moved out of PhotoCraftTool, used by NetMerge, IplLiveStreaming |
 | `Headline` (2026-11-10) | big 2-4 word chapter headline per scene under the captions (y 570, `accent` word coloured, optional `tag` chip; at 0 it is already on frame 0). The HowHub fix (LESSONS 2026-11-09): sound-off viewers read the story from headlines. Used by LocalSendTool, LiveScorePush |
 | `SysNode` `size` (improved 2026-11-10) | scales a node from its top-left corner; 1.2-1.35 when a scene has 2-4 nodes so they read on a phone |
+| `Daily` (2026-11-10) | from the @automationmentor reference: `StreakStrip` ("Day N" + chips, follow reason for daily series), `StepTracker` (phases that stay on screen and tick done), `ProfileCta` (Follow -> Following, keyword typed as a comment, "Sent! DM check karo"). Used by ClaudeSeReels1 |
 | `Stream` (2026-11-09) | live streaming: `CricketFrame` (drawn broadcast: bowler `run`, `six`), `StreamPhone` (LIVE badge, spinner `buffering`, `quality` badge, `blur`, signal `bars`), `NeighbourTV`, `SegTile`, `LadderStack` (bitrate ladder, `pick`), `LiveBar` (live edge vs your playhead), `PaperRoute` (press -> depot -> hawkers -> letterbox analogy with mapping `tags`), `Bars`, `Spinner` |
 | `Transitions` (2026-11-02) | `whipPan`, `pushThrough`, `zoomBlur`, `lensZoom` (+ `TransitionSeries`, `linearTiming`) for real scene transitions between Beats |
 

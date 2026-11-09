@@ -112,7 +112,7 @@ export function SeriesBadge({ series, episode }: { series: SeriesKind; episode: 
           fontVariantNumeric: "tabular-nums",
         }}
       >
-        Part {episode}
+        {series === "claude-se-reels" ? "Day" : "Part"} {episode}
       </div>
     </div>
   );
